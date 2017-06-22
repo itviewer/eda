@@ -1,0 +1,110 @@
+
+{
+    "Line":{
+
+    },
+    "Short":{
+        "PinPort":{
+
+        },
+        "Symbol":[
+            {
+                "Type":"line",
+                "Pos":[x,y],
+                "Rotation":0,
+                "Geometry":[x1,y1,x2,y2],
+                "LineStyle":"dot",
+                "LineWidth":"default"
+            },
+            {
+                "Type":"polyline",
+                "Pos":[x,y],
+                "Rotation":0,
+                "Geometry":[x1,y1,x2,y2,x3,y3],
+                "LineStyle":"dot",
+                "LineWidth":"default"
+            },
+            {
+                "Type":"polygon",
+                "Pos":[x,y],
+                "Rotation":0,
+                "Geometry":[x1,y1,x2,y2,x3,y3],
+                "LineStyle":"dot",
+                "LineWidth":"default",
+                "FillStyle":"None"
+            },
+            {
+                "Type":"rect",
+                "Pos":[x,y],
+                "Rotation":0,
+                "Geometry":[x,y,width,height],
+                "LineStyle":"dot",
+                "LineWidth":"default",
+                "FillStyle":"None"
+            },
+            {
+                "Type":"ellipse",
+                "Pos":[x,y],
+                "Rotation":0,
+                "Geometry":[x,y,width,height],
+                "LineStyle":"dot",
+                "LineWidth":"default",
+                "FillStyle":"None"
+            },
+            {
+                "Type":"arc",
+                "Pos":[x,y],
+                "Rotation":0,
+                "StartDegree":90,
+                "SweepLength":20,
+                "BoundingRect":[x,y,width,height],
+                "LineStyle":"dot",
+                "LineWidth":"default",
+            },
+            {
+                "Type":"quadratic",
+                "Pos":[x,y],
+                "Rotation":0,
+                "Geometry":[x1,y1,x2,y2,x3,y3],
+                "LineStyle":"dot",
+                "LineWidth":"default",
+            },
+            {
+                "Type":"cubic",
+                "Pos":[x,y],
+                "Rotation":0,
+                "Geometry":[x1,y1,x2,y2,x3,y3],
+                "LineStyle":"dot",
+                "LineWidth":"default",
+            },
+            {
+                "Type":"text",
+                "Pos":[x,y],
+                "Rotation":0,
+                "Value":"文字",
+                "Color":"",
+                "Font":[],
+                "Alignment":""
+
+            },
+        ]
+    },
+    "Clock":{
+
+    },
+    "Dot":{
+
+    },
+    "Dot Clock":{
+
+    },
+    "Short Clock":{
+
+    },
+    "Short Dot":{
+
+    },
+    "Short Dot Clock":{
+
+    }
+}

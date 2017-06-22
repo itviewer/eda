@@ -1,0 +1,110 @@
+{
+    "ActivePage": 1,
+    "OpenedPage":[1,2],
+    "ColorScheme": "orcad",
+    "CreatedTime": 1481888111,
+    "ModifiedTime": 1681888111,
+    "ProjectName": "原理图名称",
+    "SpecVersion": 1.1,
+    "ColorScheme":"orcad",
+//    "Template":{
+//        "TitleBlock":{
+//            "Title":"",
+//            "CompanyName":"",
+//            "Revision":""
+//        },d
+//        "PageSize":"",
+
+//    },
+    "LibPart":[],
+    "LibPin":[
+        {
+            "PinType":"Passive",
+            "PinPort":{
+
+            },
+            "Symbol":[
+                {
+                    "Type":"line",
+                    "Pos":[x,y],
+                    "Geometry":[x1,y1,x2,y2]
+                }
+            ],
+            "PinProperty":[
+                {
+                    "PropertyName":"PinName",
+                    "Visibility":true,
+                    "Pox":[x,y]
+                },
+                {
+                    "PropertyName":"PinNumber",
+                    "Visibility":true,
+                    "Pox":[x,y],
+                    "Value":12
+                }
+            ]
+        },
+    ],
+    "LibPower":[],
+    "LibOffpage":[],
+    "LibComponent":[],
+    "Page":[
+        {
+            "PageProperty":{
+                "PageName":"pagename1",
+                "PageSize":{
+                    "units":0,//0 英寸 1 毫米
+                    "size":"A4",
+                    "customWidth":0,
+                    "customHeight":0
+                },
+                "Grid":{
+
+                },
+                "misc":{
+                    "CreationTime":"",
+                    "ModificationTime":"",
+                    "PageNumber":0
+                }
+            },
+            "Text":[],
+            "2DLine":[],
+            "Part":[
+                {
+                    "PartReference":"U1",
+                    "PartType":"",
+                    "PartProperty":{
+
+                    }
+                },
+
+            ],
+            "Component":[],
+            "Junction":[],
+            "NetName":[],//仅别名文本 没有实际意义
+            'OffPageConnector':[],//包括电源、地和分页符
+            "Bus":[],
+            "Connection":[
+                {
+                    "Netname":"name",
+                    "Section":[
+                            {
+                                "start":"strartpoint",
+                                "end":"endpoint",
+                                "path":[]
+                            },
+                            {
+                                "start":"strartpoint",
+                                "end":"endpoint",
+                                "path":[]
+                            }
+                    ]
+                },
+            ],
+
+        },
+        {
+            "Pagename":"pagename2"
+        }
+    ]
+}

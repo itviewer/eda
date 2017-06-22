@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>new.png</file>
+        <file>open.png</file>
+        <file>save.png</file>
+        <file>zoomIn.png</file>
+        <file>zoomOne.png</file>
+        <file>zoomOut.png</file>
+        <file>redo.png</file>
+        <file>undo.png</file>
+    </qresource>
+</RCC>

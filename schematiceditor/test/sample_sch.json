@@ -1,0 +1,153 @@
+
+{
+    "ActivePage": "Page1",
+    "OpenedPage":["Page1","Page2"],
+    "ColorScheme": "orcad",
+    "CreatedTime": 1481888111,
+    "ModifiedTime": 1681888111,
+    "ProjectName": "原理图名称",
+    "SpecVersion": 1.1,
+    "ColorScheme":"orcad",
+    "PageCount":2,
+    "LibPart":{
+        "R0402":{
+            "MultiplePart":false,
+            "PinNumberVisible":true,
+            "PackageType":"Homogeneous",
+            "PartNumbering":"Alphabetic",
+            "Footprint":"",
+            "Source":"",
+            "Symbol":[
+                [
+                    {
+                        "Type":"rect",
+                        "Pos":[0,0],
+                        "Rotation":0,
+                        "Geometry":[0,0,100,200],
+                        "LineStyle":"dot",
+                        "LineWidth":"default",
+                        "FillStyle":"None"
+                    }
+                ],
+                [
+                ]
+            ],
+            "Pin":[
+                {
+                    "Name":"管脚1",
+                    "Number":1,
+                    "Order":0,
+                    "Shape":"Short",
+                    "Type":"Passive",
+                    "Pos":[0,0],
+                    "Rotation":0,
+                    "Visible":true
+                },
+                {
+                    "Name":"管脚1",
+                    "Number":1,
+                    "Order":0,
+                    "Shape":"Short",
+                    "Type":"Passive",
+                    "Pos":[0,0],
+                    "Rotation":0,
+                    "Visible":true
+                }
+            ],
+            "PartProperty":{
+                "Name":{
+                    "Visibility":true,
+                    "DisplayFormat":"Value Only",
+                    "Font":[],
+                    "Color":"",
+                    "Rotation":0,
+                    "Alignment":"center",
+                    "Pos":[2,111]
+                },
+                "Value":{
+                    "Value":"",
+                    "Visibility":true,
+                    "DisplayFormat":"Value Only",
+                    "Font":[],
+                    "Color":"",
+                    "Rotation":0,
+                    "Alignment":"center",
+                    "Pos":[0,0]
+                },
+                "PartReference":{
+                    "Visibility":true,
+                    "DisplayFormat":"Value Only",
+                    "Font":[],
+                    "Color":"",
+                    "Rotation":0,
+                    "Alignment":"center",
+                    "Pos":[0,0]
+                }
+            }
+
+        }
+    },
+    "LibPin":[],
+    "SchPage":{
+        "Page1":{
+            "PageSize":{
+                "units":"mm",
+                "size":"A4",
+                "customWidth":0,
+                "customHeight":0
+            },
+            "Grid":{
+            },
+            "misc":{
+                "CreationTime":"",
+                "ModificationTime":"",
+                "PageNumber":0
+            }
+        },
+        "Page2":{
+
+        }
+    },
+    "Page":{
+        "Page1":{
+            "Part":{
+                "U1":{
+                    "PartName":"R0402",
+                    "Pos":[200,100],
+                    "Rotation":0,
+                    "PartProperty":{
+                        "Value":{
+                            "Value":"120K",
+                            "Visibility":true,
+                            "DisplayFormat":"Value Only",
+                            "Font":[],
+                            "Color":"",
+                            "Rotation":0,
+                            "Alignment":"center"
+                        }
+                    }
+                },
+                "U2":{
+                    "PartName":"R0402",
+                    "Pos":[280,100],
+                    "Rotation":0,
+                    "PartProperty":{
+                        "Value":{
+                            "Value":"200K",
+                            "Visibility":true,
+                            "DisplayFormat":"Value Only",
+                            "Font":[],
+                            "Color":"",
+                            "Rotation":0,
+                            "Alignment":"center"
+                        }
+                    }
+                }
+            }
+        },
+        "Page2":{
+
+        }
+    }
+
+}

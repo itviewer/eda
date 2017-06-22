@@ -1,0 +1,69 @@
+
+[
+    {
+        "Net":"N000001",
+        "Section":[
+            {
+                "StartNode":"U1.2",
+                "EndNode":"U2.1",
+                "Path":[[x,y,x1,y1,x2,y2],[x,y,x1,y1,x2,y2]]
+            }
+        ]
+    },
+    {
+        "Net":"GND",
+        "Section":[
+            {
+                "StartNode":"U1.1",
+                "EndNode":"JC.1",
+                "Path":[[x,y,x1,y1,x2,y2],[x,y,x1,y1,x2,y2]]
+            },
+            {
+
+                "StartNode":"JC.1",
+                "EndNode":"U2.2",
+                "Path":[[x,y,x1,y1,x2,y2],[x,y,x1,y1,x2,y2]]
+            },
+            {
+
+                "StartNode":"JC.1",
+                "EndNode":"GND.1",
+                "Path":[[x,y,x1,y1,x2,y2],[x,y,x1,y1,x2,y2]]
+            }
+
+        ]
+    },
+    {
+        "Net":"VCC1.3",
+        "Section":[
+            {
+                "StartNode":"U1.1",
+                "EndNode":"JC.1",
+                "Path":[[x,y,x1,y1,x2,y2],[x,y,x1,y1,x2,y2]]
+            },
+            {
+
+                "StartNode":"JC.1",
+                "EndNode":"U2.2",
+                "Path":[[x,y,x1,y1,x2,y2],[x,y,x1,y1,x2,y2]]
+            },
+            {
+
+                "StartNode":"JC.1",
+                "EndNode":"VCC.1",
+                "Path":[[x,y,x1,y1,x2,y2],[x,y,x1,y1,x2,y2]]
+            }
+
+        ]
+    },
+    {
+        "Net":"GND",
+        "Section":[
+            {
+                "StartNode":"U1.1",
+                "EndNode":"GND.2",
+                "Path":[[x,y,x1,y1,x2,y2]]
+            }
+        ]
+    }
+]

@@ -1,0 +1,22 @@
+<RCC>
+    <qresource prefix="/">
+        <file>redo.png</file>
+        <file>undo.png</file>
+        <file>open.png</file>
+        <file>save.png</file>
+        <file>copy.png</file>
+        <file>cut.png</file>
+        <file>new.png</file>
+        <file>paste.png</file>
+        <file>zoomAll.png</file>
+        <file>zoomIn.png</file>
+        <file>zoomOut.png</file>
+        <file>drc.png</file>
+        <file>grid.png</file>
+        <file>annotation.png</file>
+        <file>netlist.png</file>
+        <file>pcb.png</file>
+        <file>bom.png</file>
+        <file>zoomOne.png</file>
+    </qresource>
+</RCC>
