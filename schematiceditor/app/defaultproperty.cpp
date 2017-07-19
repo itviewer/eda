@@ -24,7 +24,7 @@ const char *defaultSchProperty = R"(
                                      "createdTime": 0,
                                      "modifiedTime": 0,
                                      "schematicName": "",
-                                     "savePath": "H:/eda/eda/SchematicEditor/test/temp.json",
+                                     "savePath": "H:/eda/eda/specification/temp.json",
                                      "specVersion": 1.0
                                  }
                                  )";

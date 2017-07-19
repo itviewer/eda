@@ -17,6 +17,9 @@ class SettingFont;
 
 class PartLibManager;
 
+class QRemoteObjectHost;
+class PartEditorRPC;
+
 class PartEditor : public QMainWindow
 {
     Q_OBJECT
@@ -26,6 +29,8 @@ public:
     ~PartEditor();
 
     QUndoStack *undoStack;
+    QAction *actionButtonSnapToGrid;
+
     // TODO 直接将场景设为全局
     PartScene *currentScene() const;
 
@@ -34,6 +39,7 @@ public:
 signals:
     void launched();
     void sceneStateChanged(const FSM &state);
+    void partNumberChanged();
 
 protected:
     void closeEvent(QCloseEvent *event);
@@ -43,12 +49,18 @@ private slots:
 
     void onActionNewTriggered();
 
+    void onActionPrePartTriggered();
+    void onActionNextPartTriggered();
     void onActionZoomInTriggered();
     void onActionZoomOutTriggered();
     void onActionZoomOneTriggered();
+
 private:
     Ui::PartEditor *ui;
     PartView *partView;
+
+//    QRemoteObjectHost *rpcNode;
+//    PartEditorRPC *partEditorRPC;
 
     PartLibManager *partLibManager;
 
@@ -61,6 +73,9 @@ private:
 
     QAction *actionButtonSelect;
     QAction *currentStateAction;
+
+    QAction *actionMenuPrePart;
+    QAction *actionMenuNextPart;
 
     inline void init();
 
@@ -76,7 +91,7 @@ private:
 
     inline void createStatusLabel();
 
-    void createNewPart();
+    void createNewPart(bool manual = false);
 };
 
 #endif // PARTEDITOR_H

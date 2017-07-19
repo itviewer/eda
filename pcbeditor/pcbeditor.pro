@@ -2,8 +2,8 @@
 # 包含私有头文件 module-private
 QT += core gui widgets printsupport sql concurrent
 
-CONFIG(release, debug|release):TARGET = PCBEditor
-CONFIG(debug, debug|release):TARGET = PCBEditord
+CONFIG(release, debug|release):TARGET = pcbeditor
+CONFIG(debug, debug|release):TARGET = pcbeditord
 
 TEMPLATE = app
 
@@ -126,4 +126,5 @@ SOURCES += \
     app/defaultproperty.cpp
 
 RESOURCES += \
-    test/test.qrc
+    test/test.qrc \
+    resources/resources.qrc

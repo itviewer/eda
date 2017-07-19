@@ -18,9 +18,9 @@ PartTable::PartTable(PartSelector *selector, QWidget *parent)
     partLib->load("H:/eda/sch.db");
 
     model = new QSqlQueryModel(this);
-    model->setQuery("select partid,partname,footprint from part_parts",partLib->database());
+    model->setQuery("select partid,partalias,footprint from part_parts",partLib->database());
 
-    model->setHeaderData(1, Qt::Horizontal, "元件名称");
+    model->setHeaderData(1, Qt::Horizontal, "元件");
     model->setHeaderData(2, Qt::Horizontal, "封装");
     setModel(model);
     setColumnHidden(0,true);
@@ -39,6 +39,6 @@ PartTable::PartTable(PartSelector *selector, QWidget *parent)
 
 void PartTable::updateModel()
 {
-    model->setQuery("select partid,partname,footprint from part_parts",partLib->database());
+    model->setQuery("select partid,partalias,footprint from part_parts",partLib->database());
     resizeRowsToContents();
 }

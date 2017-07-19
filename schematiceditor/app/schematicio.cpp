@@ -35,7 +35,7 @@ bool SchematicIO::saveSchematic(const JsonFormat &format) const
     QString filename = schProperty["savePath"];
     // 文件第一次保存或另存
     if(filename.isEmpty()){
-        filename = QFileDialog::getSaveFileName(schEditor,"保存原理图", "H:/eda/eda/eCAD/test", "原理图文件 (*.json *.sch)");
+        filename = QFileDialog::getSaveFileName(schEditor,"保存原理图", "H:/eda/eda/specification", "原理图文件 (*.json *.sch)");
         if(filename.isEmpty()){
             return false;
         }

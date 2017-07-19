@@ -110,11 +110,11 @@
    <item row="2" column="1">
     <widget class="QPushButton" name="pushButton">
      <property name="text">
-      <string>元件库</string>
+      <string>封装库</string>
      </property>
     </widget>
    </item>
-   <item row="3" column="0">
+   <item row="3" column="0" rowspan="2">
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <widget class="QGroupBox" name="groupBox">
@@ -235,6 +235,13 @@
       </size>
      </property>
     </spacer>
+   </item>
+   <item row="4" column="1">
+    <widget class="QPushButton" name="pushButton_2">
+     <property name="text">
+      <string>元件库</string>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>

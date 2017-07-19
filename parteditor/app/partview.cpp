@@ -1,5 +1,8 @@
 #include "partview.h"
 #include "partscene.h"
+#include "parteditor.h"
+
+#include "packagescene.h"
 
 #include <QMouseEvent>
 
@@ -14,26 +17,22 @@ PartView::PartView(QWidget *parent)
     setTransformationAnchor(QGraphicsView::AnchorViewCenter);
     setResizeAnchor(QGraphicsView::AnchorViewCenter);
 
-    partScene = new PartScene(this);
-    setSceneRect(0,0,2000,2000);
-    setScene(partScene);
+    setSceneRect(0,0,maxSceneWidth,maxSceneHeight);
+    connect(partEditor->actionButtonSnapToGrid,&QAction::triggered,this,[this](bool snap){
+        snapToGrid = snap;
+    });
+    connect(partEditor,&PartEditor::sceneStateChanged,this,[this](const FSM &state){
+        setDragMode((state == FSM::SelectState ? QGraphicsView::RubberBandDrag
+                                                        : QGraphicsView::NoDrag));
+    });
 
-//    connect(partEditor->actionButtonSnapToGrid,&QAction::triggered,this,[this](bool snap){
-//        snapToGrid = snap;
-//    });
-//    connect(partEditor,&SchematicEditor::sceneStateChanged,this,[this](const FSM &state){
-//        setDragMode((state == FSM::SelectState ? QGraphicsView::RubberBandDrag
-//                                                        : QGraphicsView::NoDrag));
-//    });
+    connect(partEditor,&PartEditor::partNumberChanged,this,&PartView::onPartNumberChanged);
 
-
-    setDragMode(QGraphicsView::RubberBandDrag);
     setMouseTracking(true);
 }
 
 PartView::~PartView()
 {
-    partScene->deleteLater();
 }
 
 void PartView::zoomIn()
@@ -118,6 +117,29 @@ void PartView::zoomOne()
 //    partEditor->setScaleStatus(QString("%1%").arg(currentScaleFactor * 100,0,'g',4));
 
     resetGridSize();
+}
+
+void PartView::createNewPart()
+{
+    if(packageScene){
+        qDeleteAll(partScenes);
+        partScenes.clear();
+        delete packageScene;
+    }
+
+    for(int i = 0;i < partNumbers;i++){
+        PartScene *scene = new PartScene(this);
+        partScenes.append(scene);
+
+        // 能确保第一个场景立即显示
+        if(!i){
+            partScene = scene;
+            setScene(partScene);
+        }
+    }
+    packageScene = new PackageScene(this);
+
+    partEditor->setSceneState(FSM::SelectState);
 }
 
 void PartView::mousePressEvent(QMouseEvent *mouseEvent)
@@ -217,6 +239,13 @@ void PartView::drawBackground(QPainter *painter, const QRectF &rect)
 //    for (qreal y = top; y < rect.bottom(); y += displayGridSize)
 //        lines.append(QLineF(rect.left(), y, rect.right(), y));
     //    painter->drawLines(lines.data(), lines.size());
+}
+
+void PartView::onPartNumberChanged()
+{
+    partScene = partScenes.value(currentPartNumber);
+    setScene(partScene);
+    partEditor->setSceneState(FSM::SelectState);
 }
 
 QList<QGraphicsItem *> PartView::itemsAt(const QPoint &pos) const

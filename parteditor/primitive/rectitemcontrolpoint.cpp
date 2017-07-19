@@ -1,7 +1,7 @@
 #include "rectitemcontrolpoint.h"
 #include "rectitem.h"
 
-#include "PartScene.h"
+#include "partscene.h"
 
 RectItemControlPoint::RectItemControlPoint(RectItem *parent)
     :AbstractControlPoint(parent),

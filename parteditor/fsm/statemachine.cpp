@@ -1,5 +1,5 @@
 #include "statemachine.h"
-#include "PartScene.h"
+#include "partscene.h"
 #include "parteditor.h"
 #include <QEvent>
 #include <QGraphicsSceneMouseEvent>
@@ -16,7 +16,7 @@
 #include "statetextitem.h"
 #include "statepixmapitem.h"
 
-//#include "statepinitem.h"
+#include "statepinitem.h"
 
 StateMachine::StateMachine(QObject *parent)
     : QObject(parent),
@@ -34,7 +34,7 @@ StateMachine::StateMachine(QObject *parent)
     states[FSM::TextItemState] = new StateTextItem(this);
     states[FSM::PixmapItemState] = new StatePixmapItem(this);
 
-//    states[FSM::PinItemState] = new StatePinItem(this);
+    states[FSM::PinItemState] = new StatePinItem(this);
 }
 
 StateMachine::~StateMachine()
@@ -55,8 +55,9 @@ FSM StateMachine::currentState() const
 
 void StateMachine::onSceneStateChanged(FSM state)
 {
+    states.value(m_currentState)->onExit();
     m_currentState = state;
-    states.value(m_currentState)->partScene = partEditor->currentScene();
+    states.value(m_currentState)->onEntry(partEditor->currentScene());
 }
 
 // 如果不想进一步传递事件 返回true

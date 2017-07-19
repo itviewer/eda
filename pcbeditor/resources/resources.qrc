@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icon/autoRoute.png</file>
+        <file>icon/copperPour.png</file>
+        <file>icon/hole.png</file>
+        <file>icon/route.png</file>
+    </qresource>
+</RCC>

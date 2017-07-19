@@ -1,32 +1,19 @@
 #include "pinitem.h"
+
 #include "lineitem.h"
 #include "textitem.h"
 
-#include "global.h"
-#include <QPainterPath>
-#include <QKeyEvent>
 
-#include "portitem.h"
-//#include "partitem.h"
-
-PinItem::PinItem(PartScene *scene, QGraphicsItem *parent)
-    :AbstractPackageItem(scene,parent)
-{
-    setFiltersChildEvents(true);
-//    setHandlesChildEvents(true);
-
-    setZValue(ZValue::PinItemZValue);
-}
 
 PinItem::PinItem(PartScene *scene, const json &j, QGraphicsItem *parent)
     :AbstractPackageItem(scene,parent)
 {
-    setZValue(ZValue::PinItemZValue);
+//    setZValue(ZValue::PinItemZValue);
 
     QLineF line;
     line.setP1(j["pinLine"]["geometry"][0]);
     line.setP2(j["pinLine"]["geometry"][1]);
-    lineItem = new LineItem(partScene,this);
+    lineItem = new LineItem(scene,this);
     lineItem->setLine(line);
 //    for (auto& shape: j["pinShape"]) {
 //        switch (int(shape["type"])) {
@@ -40,17 +27,12 @@ PinItem::PinItem(PartScene *scene, const json &j, QGraphicsItem *parent)
 //        }
 //    }
 
-    pinNameItem= new TextItem(partScene,j["pinName"]["text"],this);
+    pinNameItem= new TextItem(scene,j["pinName"]["text"],this);
     pinNameItem->setPos(j["pinName"]["pos"]);
 
     shapeRect = lineItem->boundingRect().adjusted(0,-4,0,4);
 
-    port = new PortItem(partScene,j["pinPort"],this);
-}
-
-PinItem::~PinItem()
-{
-
+    setFlags(ItemIsSelectable | ItemIsMovable);
 }
 
 void PinItem::selected()
@@ -75,19 +57,9 @@ QRectF PinItem::boundingRect() const
 
 QPainterPath PinItem::shape() const
 {
-     QPainterPath p;
-     p.addRect(shapeRect);
-     return p;
-}
-
-void PinItem::setPinName(const json &name)
-{
-    pinNameItem->setText(name);
-}
-
-void PinItem::setPinNubmer(const json &number)
-{
-
+    QPainterPath p;
+    p.addRect(shapeRect);
+    return p;
 }
 
 void PinItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
@@ -112,6 +84,15 @@ void PinItem::setRotation(int angle)
     }
 }
 
+void PinItem::setPos(const QPointF &pos)
+{
+    if(snapToGrid){
+        AbstractPackageItem::setPos(gridPoint(pos,designGridSize));
+    }else{
+        AbstractPackageItem::setPos(pos);
+    }
+}
+
 QVariant PinItem::itemChange(QGraphicsItem::GraphicsItemChange change, const QVariant &value)
 {
     switch (change) {
@@ -123,18 +104,3 @@ QVariant PinItem::itemChange(QGraphicsItem::GraphicsItemChange change, const QVa
     }
     return QGraphicsItem::itemChange(change, value);
 }
-
-void PinItem::keyPressEvent(QKeyEvent *event)
-{
-    if(event->key() == Qt::Key_Space){
-        setRotation(rotation() - 90);
-        event->accept();
-    }
-}
-
-//bool PinItem::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
-//{
-////    qDebug() << event;
-
-//    return true;
-//}

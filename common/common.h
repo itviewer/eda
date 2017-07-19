@@ -120,6 +120,8 @@ extern Qt::Orientation areaToOrientation(Qt::DockWidgetArea area);
 extern bool loadJsonDocument(const QString& filename, json& j, const JsonFormat& format = JsonFormat::Json);
 extern bool saveJsonDocument(const QString& filename, const json& j, const JsonFormat& format = JsonFormat::Json);
 
-extern QString md5(const QString &str,const QString &salt = "");
+extern QString md5(const QString &str,const QString &salt = "",bool middle = true);
+extern int random(int min = 1025,int max = 65534);
 
+extern const QPointF gridPoint(QPointF point,const int gridSize);
 #endif // COMMON_H

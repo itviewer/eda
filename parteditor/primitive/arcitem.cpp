@@ -7,7 +7,7 @@
 //#include "shapeitemchanggeometryecommand.h"
 
 
-#include "PartScene.h"
+#include "partscene.h"
 
 ArcItem::ArcItem(PartScene *scene, QGraphicsItem *parent)
     :QGraphicsPathItem(parent),

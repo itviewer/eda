@@ -1,5 +1,5 @@
 #include "textitem.h"
-#include "PartScene.h"
+#include "partscene.h"
 
 //#include "textitemaddcommand.h"
 //#include "textitemremovecommand.h"

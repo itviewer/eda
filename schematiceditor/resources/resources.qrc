@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icon/annotation.png</file>
+        <file>icon/bom.png</file>
+        <file>icon/drc.png</file>
+        <file>icon/netlist.png</file>
+        <file>icon/pcb.png</file>
+    </qresource>
+</RCC>

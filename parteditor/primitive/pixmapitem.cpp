@@ -1,5 +1,5 @@
 #include "pixmapitem.h"
-#include "PartScene.h"
+#include "partscene.h"
 
 //#include "pixmapitemaddcommand.h"
 //#include "pixmapitemremovecommand.h"

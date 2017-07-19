@@ -6,7 +6,7 @@
 //#include "shapeitemmovecommand.h"
 //#include "shapeitemchanggeometryecommand.h"
 
-#include "PartScene.h"
+#include "partscene.h"
 
 RectItem::RectItem(PartScene *scene, QGraphicsItem *parent)
     :QGraphicsRectItem(parent),

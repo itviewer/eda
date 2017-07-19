@@ -6,6 +6,7 @@
 class StateMachine;
 class PartEditor;
 class PartScene;
+class PackageScene;
 class Db;
 
 /**
@@ -111,6 +112,8 @@ enum Numbering
  *
  * ***********************************************************************
  */
+const int maxSceneWidth = 5000;
+const int maxSceneHeight = 5000;
 
 /**
  * ***********************************************************************
@@ -126,6 +129,10 @@ extern PartEditor *partEditor;
 extern StateMachine *fsm;
 extern Db *partLib;
 
+extern QVector<PartScene *> partScenes;
+extern PackageScene *packageScene;
+
+// 元件基本信息
 extern QString partName;
 extern QString partPrefix;
 extern QString footprint;
@@ -133,6 +140,8 @@ extern int partPackageType;
 extern int partNumbers;
 extern int partNumbering;
 extern int partLibId;
+
+extern int currentPartNumber;
 
 /**
  * ***********************************************************************

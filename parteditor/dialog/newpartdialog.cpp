@@ -29,8 +29,8 @@ NewPartDialog::NewPartDialog(QWidget *parent) :
     partNumberingGroup->addButton(ui->radioButtonAlphabetic,Numbering::Alphabetic);
     partNumberingGroup->addButton(ui->radioButtonNumeric,Numbering::Numeric);
 
-    connect(ui->lineEditPartName,&QLineEdit::textChanged,this,[this](){
-        bool empty = ui->lineEditPartName->text().isEmpty();
+    connect(ui->lineEditPartName,&QLineEdit::textChanged,this,[this](const QString &text){
+        bool empty = text.isEmpty();
         if(empty && ui->pushButtonOK->isEnabled() && libCount){
             ui->pushButtonOK->setDisabled(true);
         }else if(!empty && !ui->pushButtonOK->isEnabled() && libCount){

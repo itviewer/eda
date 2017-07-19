@@ -1,0 +1,217 @@
+{
+    "libProperty":{
+        "modifiedtime":1497343062
+    },
+    "parts":{
+        "IC1":{
+            "partName":"IC1",
+            "partPrefix":"R",
+            "footprint":"footprint",
+            "partNumbers":1,
+            "partNumbering":0,
+            "symbol":[
+                {
+                    "partPin":[
+                        {
+                            "pos":[0,10],
+                            "rotation":-180,
+                            "pinShape":0,
+                            "pinType":2,
+                            "pinName":{
+                                "text":"管脚1",
+                                "pos":[-40,-6]
+                            },
+                            "pinNumber":{
+                                "text":"",
+                                "pos":[0,0]
+                            }
+                        }
+
+                    ],
+                    "partShape":[
+                                {
+                                    "color": "#000000",
+                                    "fillStyle": 0,
+                                    "geometry": [
+                                        0.0,
+                                        0.0,
+                                        100.0,
+                                        200.0
+                                    ],
+                                    "lineStyle": 1,
+                                    "lineWidth": 0,
+                                    "pos": [
+                                        0.0,
+                                        0.0
+                                    ],
+                                    "type": 100003
+                                }
+                    ],
+                    "boundingRect":[0,0,100,200]
+                }
+            ],
+            "property":[
+                {
+                    "name":"Part Name",
+                    "show":true,
+                    "format":0,
+                    "font":[],
+                    "color":"#000000",
+                    "rotation":0,
+                    "alignment":0,
+                    "pos":[40,210]
+                },
+                {
+                    "name":"Part Reference",
+                    "show":true,
+                    "format":0,
+                    "font":[],
+                    "color":"#000000",
+                    "rotation":0,
+                    "alignment":0,
+                    "pos":[20,-20]
+                },
+                {
+                    "name":"Part Value",
+                    "show":true,
+                    "format":0,
+                    "font":[],
+                    "color":"#000000",
+                    "rotation":0,
+                    "alignment":0,
+                    "pos":[0,0],
+                    "value":""
+                }
+            ],
+            "userProperty":[
+                {
+                    "name":"User Property1",
+                    "show":true,
+                    "format":0,
+                    "font":[],
+                    "color":"#000000",
+                    "rotation":0,
+                    "alignment":0,
+                    "pos":[0,0]
+                },
+                {
+                    "name":"User Property2",
+                    "show":true,
+                    "format":0,
+                    "font":[],
+                    "color":"#000000",
+                    "rotation":0,
+                    "alignment":0,
+                    "pos":[0,0],
+                    "value":""
+                }
+            ]
+        },
+        "IC2":{
+            "partName":"IC2",
+            "partPrefix":"C",
+            "footprint":"footprint",
+            "partNumbers":1,
+            "partNumbering":0,
+            "symbol":[
+                {
+                    "partPin":[
+                        {
+                            "pos":[80,0],
+                            "rotation":-90,
+                            "pinShape":0,
+                            "pinType":2,
+                            "pinName":{
+                                "text":"管脚1",
+                                "pos":[-40,-6]
+                            },
+                            "pinNumber":{
+                                "text":"",
+                                "pos":[0,0]
+                            }
+                        }
+                    ],
+                    "partShape":[
+                                {
+                                    "color": "#000000",
+                                    "fillStyle": 0,
+                                    "geometry": [
+                                        0.0,
+                                        0.0,
+                                        100.0,
+                                        200.0
+                                    ],
+                                    "lineStyle": 1,
+                                    "lineWidth": 0,
+                                    "pos": [
+                                        0.0,
+                                        0.0
+                                    ],
+                                    "type": 100003
+                                }
+                    ],
+                    "boundingRect":[0,0,100,200]
+                }
+            ],
+            "property":[
+                {
+                    "name":"Part Name",
+                    "show":true,
+                    "format":0,
+                    "font":[],
+                    "color":"#000000",
+                    "rotation":0,
+                    "alignment":0,
+                    "pos":[0,0]
+                },
+                {
+                    "name":"Part Reference",
+                    "show":true,
+                    "format":0,
+                    "font":[],
+                    "color":"#000000",
+                    "rotation":0,
+                    "alignment":0,
+                    "pos":[0,0]
+                },
+                {
+                    "name":"Part Value",
+                    "show":true,
+                    "format":0,
+                    "font":[],
+                    "color":"#000000",
+                    "rotation":0,
+                    "alignment":0,
+                    "pos":[0,0],
+                    "value":""
+                }
+            ],
+            "userProperty":[
+                {
+                    "name":"User Property1",
+                    "show":true,
+                    "format":0,
+                    "font":[],
+                    "color":"#000000",
+                    "rotation":0,
+                    "alignment":0,
+                    "pos":[0,0]
+                },
+                {
+                    "name":"User Property2",
+                    "show":true,
+                    "format":0,
+                    "font":[],
+                    "color":"#000000",
+                    "rotation":0,
+                    "alignment":0,
+                    "pos":[0,0],
+                    "value":""
+                }
+            ]
+        }
+    }
+}
+
+
+

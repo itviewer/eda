@@ -44,6 +44,7 @@ PCBEditor::PCBEditor(QWidget *parent) :
     connect(this,&PCBEditor::launch,
             this,&PCBEditor::postInit);
 
+    setWindowTitle("Idea PCB");
 }
 
 PCBEditor::~PCBEditor()
@@ -188,7 +189,7 @@ void PCBEditor::createMenuSetting()
 void PCBEditor::createToolButtonMain()
 {
     // 创建主工具栏
-    QAction *actionOpen = new QAction(QIcon(":/open.png"),tr("打开"),this);
+    QAction *actionOpen = new QAction(QIcon(":/icon/open.png"),tr("打开"),this);
     ui->toolBarMain->addAction(actionOpen);
     connect(actionOpen,&QAction::triggered,this,[=](){
         const QString filename = QFileDialog::getOpenFileName(this, tr("打开PCB文件"),
@@ -199,7 +200,7 @@ void PCBEditor::createToolButtonMain()
 //        }
     });
 
-    QAction *actionSave = new QAction(QIcon(":/save.png"),tr("保存"),this);
+    QAction *actionSave = new QAction(QIcon(":/icon/save.png"),tr("保存"),this);
     ui->toolBarMain->addAction(actionSave);
     connect(actionSave,&QAction::triggered,this,[=](){
         // 在页面中判断是否真需要保存
@@ -208,40 +209,40 @@ void PCBEditor::createToolButtonMain()
     ui->toolBarMain->addSeparator();
 
     actionUndo = undoGroup->createUndoAction(this);
-    actionUndo->setIcon(QIcon(":/undo.png"));
+    actionUndo->setIcon(QIcon(":/icon/undo.png"));
     ui->toolBarMain->addAction(actionUndo);
 
     actionRedo = undoGroup->createRedoAction(this);
-    actionRedo->setIcon(QIcon(":/redo.png"));
+    actionRedo->setIcon(QIcon(":/icon/redo.png"));
     ui->toolBarMain->addAction(actionRedo);
 
     ui->toolBarMain->addSeparator();
 
-    QAction *actionHome = new QAction(QIcon(":/zoomAll.png"),tr("图页"),this);
+    QAction *actionHome = new QAction(QIcon(":/icon/zoomAll.png"),tr("图页"),this);
     ui->toolBarMain->addAction(actionHome);
 
-    QAction *actionZoomIn = new QAction(QIcon(":/zoomIn.png"),tr("放大"),this);
+    QAction *actionZoomIn = new QAction(QIcon(":/icon/zoomIn.png"),tr("放大"),this);
     ui->toolBarMain->addAction(actionZoomIn);
 
-    QAction *actionZoomOut = new QAction(QIcon(":/zoomOut.png"),tr("缩小"),this);
+    QAction *actionZoomOut = new QAction(QIcon(":/icon/zoomOut.png"),tr("缩小"),this);
     ui->toolBarMain->addAction(actionZoomOut);
 
-    QAction *actionRoute = new QAction(QIcon(":/route.png"),tr("交互布线"),this);
+    QAction *actionRoute = new QAction(QIcon(":/icon/route.png"),tr("交互布线"),this);
     ui->toolBarRoute->addAction(actionRoute);
 
 
-    QAction *actionAutoRoute = new QAction(QIcon(":/autoRoute.png"),tr("自动布线"),this);
+    QAction *actionAutoRoute = new QAction(QIcon(":/icon/autoRoute.png"),tr("自动布线"),this);
     ui->toolBarRoute->addAction(actionAutoRoute);
 
 }
 
 void PCBEditor::createToolButtonDrawing()
 {
-    QAction *actionCopperPourItem = new QAction(QIcon(":/copperPour.png"),tr("铜箔"),this);
+    QAction *actionCopperPourItem = new QAction(QIcon(":/icon/copperPour.png"),tr("铜箔"),this);
     actionCopperPourItem->setCheckable(true);
     ui->toolBarDesign->addAction(actionCopperPourItem);
 
-    QAction *actionMountingHoleItem = new QAction(QIcon(":/hole.png"),tr("安装孔"),this);
+    QAction *actionMountingHoleItem = new QAction(QIcon(":/icon/hole.png"),tr("安装孔"),this);
     actionMountingHoleItem->setCheckable(true);
     ui->toolBarDesign->addAction(actionMountingHoleItem);
 

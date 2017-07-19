@@ -17,7 +17,6 @@
 #include "statepixmapitem.h"
 
 #include "statewiresegmentitem.h"
-//#include "statepinitem.h"
 #include "statepartitem.h"
 
 StateMachine::StateMachine(QObject *parent)
@@ -37,7 +36,6 @@ StateMachine::StateMachine(QObject *parent)
     states[FSM::PixmapItemState] = new StatePixmapItem(this);
 
     states[FSM::WireSegmentItemState] = new StateWireSegmentItem(this);
-//    states[FSM::PinItemState] = new StatePinItem(this);
     states[FSM::PartItemState] = new StatePartItem(this);
 
 }

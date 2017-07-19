@@ -8,6 +8,8 @@ namespace Ui {
     class PartLibManager;
 }
 
+class QSqlQueryModel;
+
 class PartLibManager : public QWidget
 {
     Q_OBJECT
@@ -21,11 +23,17 @@ signals:
 private slots:
     void onButtonAddLibraryClicked();
     void onButtonRemoveLibraryClicked();
+    void onButtonSearchClicked();
 
 private:
     Ui::PartLibManager *ui;
 
+    QSqlQueryModel *model;
+    int currentLibIndex;
+
     void updatePartLibrary();
+    void updatePartList(const QString &where = "");
+    QString getWhere() const;
 };
 
 #endif // PARTLIBMANAGER_H

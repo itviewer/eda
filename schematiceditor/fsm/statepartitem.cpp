@@ -118,6 +118,8 @@ void StatePartItem::cancelDrawing()
         partItem = nullptr;
         isDrawing = false;
     }
+    schEditor->setSceneState(FSM::SelectState);
+
 }
 
 void StatePartItem::createContextMenu()

@@ -15,13 +15,19 @@ PartEditor *partEditor = nullptr;
 StateMachine *fsm = nullptr;
 Db *partLib = nullptr;
 
+QVector<PartScene *> partScenes;
+PackageScene *packageScene = nullptr;
+
+
 QString partName = "";
 QString partPrefix = "";
 QString footprint = "";
 int partPackageType = 0;
-int partNumbers = 1;
+int partNumbers = 3;
 int partNumbering = 0;
 int partLibId = 0;
+
+int currentPartNumber = 0;
 
 /**
  * ***********************************************************************

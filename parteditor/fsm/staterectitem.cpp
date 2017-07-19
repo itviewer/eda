@@ -12,11 +12,11 @@ bool StateRectItem::mousePressEvent(QGraphicsSceneMouseEvent *mouseEvent)
 {
     if (mouseEvent->button() == Qt::LeftButton)
     {
-        mousePressScenePoint = mouseEvent->scenePos();
+        mousePressScenePoint = mouseEvent->scenePos();qDebug() << mousePressScenePoint ;
         if(!rectItem){
             firstMousePressScenePoint = mousePressScenePoint;
-            rectItem = new RectItem(partScene);
-            rectItem->setPos(firstMousePressScenePoint);
+            rectItem = new RectItem(partScene,partScene->aideRectItem);
+            rectItem->setPos(partScene->aideRectItem->mapFromScene(firstMousePressScenePoint));
 
             partScene->addItem(rectItem);
 
@@ -99,6 +99,7 @@ void StateRectItem::endDrawing()
             rectItem->setSelected(true);
 
 //            rectItem->createCommandAdd();
+            partScene->addShape(rectItem);
 
             rectItem = nullptr;
             metaRect = QRectF();

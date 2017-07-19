@@ -35,8 +35,6 @@ public:
 
 protected:
     QVariant itemChange(GraphicsItemChange change, const QVariant &value);
-
-    void keyPressEvent(QKeyEvent *event);
 //    bool sceneEventFilter(QGraphicsItem *watched, QEvent *event);
 
 //    void mousePressEvent(QGraphicsSceneMouseEvent *event);

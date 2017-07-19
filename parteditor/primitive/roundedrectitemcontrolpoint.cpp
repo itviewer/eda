@@ -1,7 +1,7 @@
 #include "roundedrectitemcontrolpoint.h"
 #include "roundedrectitem.h"
 
-#include "PartScene.h"
+#include "partscene.h"
 
 RoundedRectItemControlPoint::RoundedRectItemControlPoint(RoundedRectItem *parent)
     :AbstractControlPoint(parent),

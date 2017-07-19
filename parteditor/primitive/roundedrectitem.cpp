@@ -6,7 +6,7 @@
 //#include "shapeitemmovecommand.h"
 //#include "shapeitemchanggeometryecommand.h"
 
-#include "PartScene.h"
+#include "partscene.h"
 
 RoundedRectItem::RoundedRectItem(PartScene *scene, QGraphicsItem *parent)
     :QGraphicsRoundedRectItem(parent),

@@ -7,7 +7,7 @@
 //#include "shapeitemchanggeometryecommand.h"
 //#include "shapeitemrotatecommand.h"
 
-#include "PartScene.h"
+#include "partscene.h"
 #include <QMenu>
 
 LineItem::LineItem(PartScene* scene, QGraphicsItem* parent)

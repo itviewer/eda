@@ -4,7 +4,7 @@
 
 int main(int argc, char *argv[])
 {
-    QApplication::setStyle(QStyleFactory::create("fusion"));
+//    QApplication::setStyle(QStyleFactory::create("fusion"));
 
     QApplication a(argc, argv);
     PartEditor w;

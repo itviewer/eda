@@ -5,7 +5,7 @@ include(db/db.pri)
 INCLUDEPATH += $$PWD
 
 RESOURCES += \
-    $$PWD/resources/qrc_common.qrc
+    $$PWD/resources/common.qrc
 
 HEADERS += \
     $$PWD/common.h \

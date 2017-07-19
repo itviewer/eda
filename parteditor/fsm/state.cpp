@@ -13,6 +13,16 @@ State::State(QObject* parent)
 
 }
 
+void State::onEntry(PartScene *scene)
+{
+    partScene = scene;
+}
+
+void State::onExit()
+{
+
+}
+
 bool State::mousePressEvent(QGraphicsSceneMouseEvent *mouseEvent)
 {
     return false;

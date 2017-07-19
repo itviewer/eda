@@ -4,8 +4,6 @@
 #include <QGraphicsView>
 #include "global.h"
 
-class PartScene;
-
 class PartView : public QGraphicsView
 {
 public:
@@ -18,6 +16,8 @@ public:
     void zoomOut();
     void zoomOne();
 
+    void createNewPart();
+
 protected:
     void mousePressEvent(QMouseEvent *mouseEvent);
 //    void mouseMoveEvent(QMouseEvent *mouseEvent);
@@ -27,6 +27,8 @@ protected:
 //    void contextMenuEvent(QContextMenuEvent *menuEvent);
 
     void drawBackground(QPainter *painter, const QRectF &rect);
+private slots:
+    void onPartNumberChanged();
 private:
     DragMode originMode;
     qreal currentScaleFactor;

@@ -78,6 +78,8 @@ SchematicEditor::SchematicEditor(QWidget *parent) :
     navigator->createNavigator();
 
     createNewSchPage();
+
+    setWindowTitle("Idea CAD");
 }
 
 SchematicEditor::~SchematicEditor()
@@ -158,7 +160,7 @@ void SchematicEditor::onActionNewTriggered()
 void SchematicEditor::onActionOpenTriggered()
 {
     const QString filename = QFileDialog::getOpenFileName(this, "打开原理图",
-                                                          "H:/eda/eda/eCAD/test",
+                                                          "H:/eda/eda/specification",
                                                           "原理图文件 (*.json *.sch)");
     if(!filename.isEmpty()){
         initSchematic(filename);
@@ -492,15 +494,15 @@ void SchematicEditor::createToolButtonMain()
 {
     // 创建主工具栏
     // TODO 研究下 QStringLiteral 另外研究下5.10的QStringView
-    QAction *actionButtonNew = new QAction(QIcon(":/new.png"),"新建",this);
+    QAction *actionButtonNew = new QAction(QIcon(":/icon/new.png"),"新建",this);
     ui->toolBarMain->addAction(actionButtonNew);
     connect(actionButtonNew,&QAction::triggered,this,&SchematicEditor::onActionNewTriggered);
 
-    QAction *actionButtonOpen = new QAction(QIcon(":/open.png"),"打开",this);
+    QAction *actionButtonOpen = new QAction(QIcon(":/icon/open.png"),"打开",this);
     ui->toolBarMain->addAction(actionButtonOpen);
     connect(actionButtonOpen,&QAction::triggered,this,&SchematicEditor::onActionOpenTriggered);
 
-    QAction *actionButtonSave = new QAction(QIcon(":/save.png"),"保存",this);
+    QAction *actionButtonSave = new QAction(QIcon(":/icon/save.png"),"保存",this);
     ui->toolBarMain->addAction(actionButtonSave);
     connect(actionButtonSave,&QAction::triggered,this,&SchematicEditor::onActionSaveTriggered);
 
@@ -511,62 +513,62 @@ void SchematicEditor::createToolButtonMain()
 
     ui->toolBarMain->addSeparator();
 
-    actionButtonCut = new QAction(QIcon(":/cut.png"),"剪切",this);
+    actionButtonCut = new QAction(QIcon(":/icon/cut.png"),"剪切",this);
     actionButtonCut->setDisabled(true);
     ui->toolBarMain->addAction(actionButtonCut);
 
-    actionButtonCopy = new QAction(QIcon(":/copy.png"),"复制",this);
+    actionButtonCopy = new QAction(QIcon(":/icon/copy.png"),"复制",this);
     actionButtonCopy->setDisabled(true);
     ui->toolBarMain->addAction(actionButtonCopy);
 
-    QAction *actionButtonPaste = new QAction(QIcon(":/paste.png"),"粘贴",this);
+    QAction *actionButtonPaste = new QAction(QIcon(":/icon/paste.png"),"粘贴",this);
     actionButtonPaste->setDisabled(true);
     ui->toolBarMain->addAction(actionButtonPaste);
 
     ui->toolBarMain->addSeparator();
 
     actionButtonUndo = undoGroup->createUndoAction(this);
-    actionButtonUndo->setIcon(QIcon(":/undo.png"));
+    actionButtonUndo->setIcon(QIcon(":/icon/undo.png"));
     ui->toolBarMain->addAction(actionButtonUndo);
 
     actionButtonRedo = undoGroup->createRedoAction(this);
-    actionButtonRedo->setIcon(QIcon(":/redo.png"));
+    actionButtonRedo->setIcon(QIcon(":/icon/redo.png"));
     ui->toolBarMain->addAction(actionButtonRedo);
 
     ui->toolBarMain->addSeparator();
 
-    QAction *actionButtonZoomIn = new QAction(QIcon(":/zoomIn.png"),"放大",this);
+    QAction *actionButtonZoomIn = new QAction(QIcon(":/icon/zoomIn.png"),"放大",this);
     ui->toolBarMain->addAction(actionButtonZoomIn);
     connect(actionButtonZoomIn,&QAction::triggered,this,&SchematicEditor::onActionZoomInTriggered);
 
-    QAction *actionButtonZoomOut = new QAction(QIcon(":/zoomOut.png"),"缩小",this);
+    QAction *actionButtonZoomOut = new QAction(QIcon(":/icon/zoomOut.png"),"缩小",this);
     ui->toolBarMain->addAction(actionButtonZoomOut);
     connect(actionButtonZoomOut,&QAction::triggered,this,&SchematicEditor::onActionZoomOutTriggered);
 
-    QAction *actionButtonZoomOne = new QAction(QIcon(":/zoomOne.png"),"重置",this);
+    QAction *actionButtonZoomOne = new QAction(QIcon(":/icon/zoomOne.png"),"重置",this);
     ui->toolBarMain->addAction(actionButtonZoomOne);
     connect(actionButtonZoomOne,&QAction::triggered,this,&SchematicEditor::onActionZoomOneTriggered);
 
-    QAction *actionButtonZoomHome = new QAction(QIcon(":/zoomAll.png"),"全局",this);
+    QAction *actionButtonZoomHome = new QAction(QIcon(":/icon/zoomAll.png"),"全局",this);
     ui->toolBarMain->addAction(actionButtonZoomHome);
     connect(actionButtonZoomHome,&QAction::triggered,this,&SchematicEditor::onActionZoomHomeTriggered);
 
 
-    QAction *actionButtonAnnotate = new QAction(QIcon(":/annotation.png"),"排序",this);
+    QAction *actionButtonAnnotate = new QAction(QIcon(":/icon/annotation.png"),"排序",this);
     ui->toolBarDesign->addAction(actionButtonAnnotate);
 
-    QAction *actionButtonDRCCheck = new QAction(QIcon(":/drc.png"),"DRC",this);
+    QAction *actionButtonDRCCheck = new QAction(QIcon(":/icon/drc.png"),"DRC",this);
     ui->toolBarDesign->addAction(actionButtonDRCCheck);
 
-    QAction *actionButtonNetlist = new QAction(QIcon(":/netlist.png"),"网表",this);
+    QAction *actionButtonNetlist = new QAction(QIcon(":/icon/netlist.png"),"网表",this);
     ui->toolBarDesign->addAction(actionButtonNetlist);
 
-    QAction *actionButtonBOM = new QAction(QIcon(":/bom.png"),"BOM",this);
+    QAction *actionButtonBOM = new QAction(QIcon(":/icon/bom.png"),"BOM",this);
     ui->toolBarDesign->addAction(actionButtonBOM);
 
     ui->toolBarDesign->addSeparator();
 
-    actionButtonSnapToGrid = new QAction(QIcon(":/grid.png"),"栅格对齐",this);
+    actionButtonSnapToGrid = new QAction(QIcon(":/icon/grid.png"),"栅格对齐",this);
     actionButtonSnapToGrid->setCheckable(true);
     actionButtonSnapToGrid->setChecked(true);
     ui->toolBarDesign->addAction(actionButtonSnapToGrid);
@@ -575,7 +577,7 @@ void SchematicEditor::createToolButtonMain()
     });
 
 
-    QAction *actionButtonPCB = new QAction(QIcon(":/pcb.png"),"同步PCB",this);
+    QAction *actionButtonPCB = new QAction(QIcon(":/icon/pcb.png"),"同步PCB",this);
     ui->toolBarDesign->addAction(actionButtonPCB);
 }
 

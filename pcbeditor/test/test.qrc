@@ -1,15 +1,3 @@
 <RCC>
-    <qresource prefix="/">
-        <file>open.png</file>
-        <file>redo.png</file>
-        <file>save.png</file>
-        <file>undo.png</file>
-        <file>zoomAll.png</file>
-        <file>zoomIn.png</file>
-        <file>zoomOut.png</file>
-        <file>route.png</file>
-        <file>autoRoute.png</file>
-        <file>hole.png</file>
-        <file>copperPour.png</file>
-    </qresource>
+    <qresource prefix="/"/>
 </RCC>

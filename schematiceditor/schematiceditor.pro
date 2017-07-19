@@ -2,8 +2,8 @@
 # 包含私有头文件 module-private
 QT += core gui widgets printsupport sql concurrent
 
-CONFIG(release, debug|release):TARGET = SchematicEditor
-CONFIG(debug, debug|release):TARGET = SchematicEditord
+CONFIG(release, debug|release):TARGET = schematiceditor
+CONFIG(debug, debug|release):TARGET = schematiceditord
 
 TEMPLATE = app
 
@@ -18,7 +18,7 @@ win32 {
 DESTDIR = $$PWD/../out
 
 include(../common/common.pri)
-include(../PartLibManager/PartLibManager.pri)
+include(../partlibmanager/partlibmanager.pri)
 
 INCLUDEPATH += \
     app \
@@ -55,7 +55,6 @@ HEADERS += \
     fsm/statelineitem.h \
     fsm/statemachine.h \
     fsm/statepartitem.h \
-    fsm/statepinitem.h \
     fsm/statepixmapitem.h \
     fsm/statepolygonitem.h \
     fsm/statepolylineitem.h \
@@ -165,7 +164,6 @@ SOURCES += \
     fsm/statelineitem.cpp \
     fsm/statemachine.cpp \
     fsm/statepartitem.cpp \
-    fsm/statepinitem.cpp \
     fsm/statepixmapitem.cpp \
     fsm/statepolygonitem.cpp \
     fsm/statepolylineitem.cpp \
@@ -258,15 +256,5 @@ SOURCES += \
     dialog/newpagedialog.cpp
 
 RESOURCES += \
-    test/test.qrc
-
-DISTFILES += \
-    test/connect.json \
-    test/partlib.json \
-    test/pinlib.json \
-    test/powerlib.json \
-    test/project.json \
-    test/sample_sch.json \
-    test/temp.json \
-    test/test.json \
-    test/schProperty.json
+    test/test.qrc \
+    resources/resources.qrc

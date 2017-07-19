@@ -3,7 +3,7 @@
 #include <QGraphicsSceneMouseEvent>
 #include <QDebug>
 
-#include "PartScene.h"
+#include "partscene.h"
 
 EllipseItemControlPoint::EllipseItemControlPoint(EllipseItem *parent)
     :AbstractControlPoint(parent),

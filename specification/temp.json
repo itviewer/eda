@@ -1,0 +1,544 @@
+{
+    "pages": {
+        "untitled": {
+            "pagePart": [
+                {
+                    "partMd5": "45149553f092009b",
+                    "partReference": "U1",
+                    "pos": [
+                        450.0,
+                        420.0
+                    ]
+                },
+                {
+                    "partMd5": "45149553f092009b",
+                    "partReference": "U2",
+                    "pos": [
+                        690.0,
+                        410.0
+                    ]
+                }
+            ],
+            "pageProperty": {
+                "index": 0,
+                "pageName": "untitled",
+                "pageSize": "A4",
+                "sceneRect": [
+                    -1915.355,
+                    -2086.615,
+                    5000,
+                    5000
+                ]
+            },
+            "pageShape": [
+                {
+                    "color": "#000000",
+                    "fillStyle": 0,
+                    "geometry": [
+                        0.0,
+                        0.0,
+                        280.0,
+                        140.0
+                    ],
+                    "lineStyle": 1,
+                    "lineWidth": 0,
+                    "pos": [
+                        450.0,
+                        200.0
+                    ],
+                    "type": 100003
+                }
+            ],
+            "pageWire": []
+        }
+    },
+    "schOffpageLib": {},
+    "schPartLib": {
+        "45149553f092009b": {
+            "footprint": "footprint",
+            "partName": "IC5",
+            "partNumbering": 0,
+            "partNumbers": 1,
+            "partPrefix": "U",
+            "property": [
+                {
+                    "alignment": 0,
+                    "color": "#000000",
+                    "font": [],
+                    "format": 0,
+                    "name": "Part Name",
+                    "pos": [
+                        0,
+                        0
+                    ],
+                    "rotation": 0,
+                    "show": true
+                },
+                {
+                    "alignment": 0,
+                    "color": "#000000",
+                    "font": [],
+                    "format": 0,
+                    "name": "Part Reference",
+                    "pos": [
+                        0,
+                        0
+                    ],
+                    "rotation": 0,
+                    "show": true
+                },
+                {
+                    "alignment": 0,
+                    "color": "#000000",
+                    "font": [],
+                    "format": 0,
+                    "name": "Part Value",
+                    "pos": [
+                        0,
+                        0
+                    ],
+                    "rotation": 0,
+                    "show": true,
+                    "value": ""
+                }
+            ],
+            "symbol": [
+                {
+                    "boundingRect": [
+                        0,
+                        0,
+                        100,
+                        200
+                    ],
+                    "partPin": [
+                        {
+                            "pinName": {
+                                "pos": [
+                                    -40,
+                                    -6
+                                ],
+                                "text": "管脚1"
+                            },
+                            "pinNumber": {
+                                "pos": [
+                                    0,
+                                    0
+                                ],
+                                "text": ""
+                            },
+                            "pinShape": 0,
+                            "pinType": 2,
+                            "pos": [
+                                30,
+                                0
+                            ],
+                            "rotation": -90
+                        },
+                        {
+                            "pinName": {
+                                "pos": [
+                                    -40,
+                                    -6
+                                ],
+                                "text": "管脚2"
+                            },
+                            "pinNumber": {
+                                "pos": [
+                                    0,
+                                    0
+                                ],
+                                "text": ""
+                            },
+                            "pinShape": 0,
+                            "pinType": 2,
+                            "pos": [
+                                70,
+                                0
+                            ],
+                            "rotation": -90
+                        },
+                        {
+                            "pinName": {
+                                "pos": [
+                                    -40,
+                                    -6
+                                ],
+                                "text": "管脚3"
+                            },
+                            "pinNumber": {
+                                "pos": [
+                                    0,
+                                    0
+                                ],
+                                "text": ""
+                            },
+                            "pinShape": 0,
+                            "pinType": 2,
+                            "pos": [
+                                100,
+                                50
+                            ],
+                            "rotation": 0
+                        },
+                        {
+                            "pinName": {
+                                "pos": [
+                                    -40,
+                                    -6
+                                ],
+                                "text": "管脚4"
+                            },
+                            "pinNumber": {
+                                "pos": [
+                                    0,
+                                    0
+                                ],
+                                "text": ""
+                            },
+                            "pinShape": 0,
+                            "pinType": 2,
+                            "pos": [
+                                100,
+                                70
+                            ],
+                            "rotation": 0
+                        },
+                        {
+                            "pinName": {
+                                "pos": [
+                                    -40,
+                                    -6
+                                ],
+                                "text": "管脚5"
+                            },
+                            "pinNumber": {
+                                "pos": [
+                                    0,
+                                    0
+                                ],
+                                "text": ""
+                            },
+                            "pinShape": 0,
+                            "pinType": 2,
+                            "pos": [
+                                100,
+                                90
+                            ],
+                            "rotation": 0
+                        },
+                        {
+                            "pinName": {
+                                "pos": [
+                                    -40,
+                                    -6
+                                ],
+                                "text": "管脚6"
+                            },
+                            "pinNumber": {
+                                "pos": [
+                                    0,
+                                    0
+                                ],
+                                "text": ""
+                            },
+                            "pinShape": 0,
+                            "pinType": 2,
+                            "pos": [
+                                100,
+                                110
+                            ],
+                            "rotation": 0
+                        },
+                        {
+                            "pinName": {
+                                "pos": [
+                                    -40,
+                                    -6
+                                ],
+                                "text": "管脚7"
+                            },
+                            "pinNumber": {
+                                "pos": [
+                                    0,
+                                    0
+                                ],
+                                "text": ""
+                            },
+                            "pinShape": 0,
+                            "pinType": 2,
+                            "pos": [
+                                100,
+                                130
+                            ],
+                            "rotation": 0
+                        },
+                        {
+                            "pinName": {
+                                "pos": [
+                                    -40,
+                                    -6
+                                ],
+                                "text": "管脚9"
+                            },
+                            "pinNumber": {
+                                "pos": [
+                                    0,
+                                    0
+                                ],
+                                "text": ""
+                            },
+                            "pinShape": 0,
+                            "pinType": 2,
+                            "pos": [
+                                30,
+                                200
+                            ],
+                            "rotation": -270
+                        },
+                        {
+                            "pinName": {
+                                "pos": [
+                                    -40,
+                                    -6
+                                ],
+                                "text": "管脚8"
+                            },
+                            "pinNumber": {
+                                "pos": [
+                                    0,
+                                    0
+                                ],
+                                "text": ""
+                            },
+                            "pinShape": 0,
+                            "pinType": 2,
+                            "pos": [
+                                70,
+                                200
+                            ],
+                            "rotation": -270
+                        },
+                        {
+                            "pinName": {
+                                "pos": [
+                                    -40,
+                                    -6
+                                ],
+                                "text": "管脚14"
+                            },
+                            "pinNumber": {
+                                "pos": [
+                                    0,
+                                    0
+                                ],
+                                "text": ""
+                            },
+                            "pinShape": 0,
+                            "pinType": 2,
+                            "pos": [
+                                0,
+                                50
+                            ],
+                            "rotation": -180
+                        },
+                        {
+                            "pinName": {
+                                "pos": [
+                                    -40,
+                                    -6
+                                ],
+                                "text": "管脚13"
+                            },
+                            "pinNumber": {
+                                "pos": [
+                                    0,
+                                    0
+                                ],
+                                "text": ""
+                            },
+                            "pinShape": 0,
+                            "pinType": 2,
+                            "pos": [
+                                0,
+                                70
+                            ],
+                            "rotation": -180
+                        },
+                        {
+                            "pinName": {
+                                "pos": [
+                                    -40,
+                                    -6
+                                ],
+                                "text": "管脚12"
+                            },
+                            "pinNumber": {
+                                "pos": [
+                                    0,
+                                    0
+                                ],
+                                "text": ""
+                            },
+                            "pinShape": 0,
+                            "pinType": 2,
+                            "pos": [
+                                0,
+                                90
+                            ],
+                            "rotation": -180
+                        },
+                        {
+                            "pinName": {
+                                "pos": [
+                                    -40,
+                                    -6
+                                ],
+                                "text": "管脚11"
+                            },
+                            "pinNumber": {
+                                "pos": [
+                                    0,
+                                    0
+                                ],
+                                "text": ""
+                            },
+                            "pinShape": 0,
+                            "pinType": 2,
+                            "pos": [
+                                0,
+                                110
+                            ],
+                            "rotation": -180
+                        },
+                        {
+                            "pinName": {
+                                "pos": [
+                                    -40,
+                                    -6
+                                ],
+                                "text": "管脚10"
+                            },
+                            "pinNumber": {
+                                "pos": [
+                                    0,
+                                    0
+                                ],
+                                "text": ""
+                            },
+                            "pinShape": 0,
+                            "pinType": 2,
+                            "pos": [
+                                0,
+                                130
+                            ],
+                            "rotation": -180
+                        }
+                    ],
+                    "partShape": [
+                        {
+                            "color": "#000000",
+                            "fillStyle": 0,
+                            "geometry": [
+                                0.0,
+                                0.0,
+                                100.0,
+                                200.0
+                            ],
+                            "lineStyle": 1,
+                            "lineWidth": 0,
+                            "pos": [
+                                0.0,
+                                0.0
+                            ],
+                            "type": 100003
+                        }
+                    ]
+                }
+            ],
+            "userProperty": [
+                {
+                    "alignment": 0,
+                    "color": "#000000",
+                    "font": [],
+                    "format": 0,
+                    "name": "User Property1",
+                    "pos": [
+                        0,
+                        0
+                    ],
+                    "rotation": 0,
+                    "show": true
+                },
+                {
+                    "alignment": 0,
+                    "color": "#000000",
+                    "font": [],
+                    "format": 0,
+                    "name": "User Property2",
+                    "pos": [
+                        0,
+                        0
+                    ],
+                    "rotation": 0,
+                    "show": true,
+                    "value": ""
+                }
+            ]
+        }
+    },
+    "schPinLib": [
+        {
+            "pinLine": {
+                "color": "#000000",
+                "geometry": [
+                    [
+                        0.0,
+                        0.0
+                    ],
+                    [
+                        50.0,
+                        0.0
+                    ]
+                ],
+                "lineStyle": 1,
+                "lineWidth": 0,
+                "pos": [
+                    0.0,
+                    0.0
+                ],
+                "rotation": 0.0,
+                "type": 100001
+            },
+            "pinName": {
+                "pos": [
+                    -70.0,
+                    -6.0
+                ],
+                "text": "未命名管脚"
+            },
+            "pinNumber": {
+                "number": 0,
+                "pos": [
+                    0.0,
+                    0.0
+                ]
+            },
+            "pinPort": {
+                "pos": [
+                    50,
+                    0
+                ],
+                "state": 0
+            },
+            "pinShape": []
+        }
+    ],
+    "schPowerLib": {},
+    "schProperty": {
+        "createdTime": 1499051979,
+        "modifiedTime": 1499052031,
+        "savePath": "H:/eda/eda/specification/temp.json",
+        "schematicName": "新建原理图",
+        "specVersion": 1.0
+    }
+}

@@ -2,10 +2,8 @@ TEMPLATE = subdirs
 
 SUBDIRS += \
     schematiceditor \
-#    pcbeditor \
     parteditor \
+#    pcbeditor \
 #    footprinteditor
-
-
-DISTFILES += \
-    specification/sch_1_0.json
+#    controlcenter
+    specification

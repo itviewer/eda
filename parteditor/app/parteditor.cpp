@@ -14,6 +14,8 @@
 
 #include "partlibmanager.h"
 
+//#include <QRemoteObjectHost>
+//#include "parteditorrpc.h"
 
 PartEditor::PartEditor(QWidget *parent) :
     QMainWindow(parent),
@@ -29,8 +31,16 @@ PartEditor::PartEditor(QWidget *parent) :
     partView = new PartView;
     setCentralWidget(partView);
 
+    createNewPart();
+
     connect(this,&PartEditor::launched,
             this,&PartEditor::postInit);
+
+//    rpcNode = new QRemoteObjectHost(QUrl(QString("local:PartEditor:%1").arg(qApp->applicationPid())),QUrl(QStringLiteral("local:RegistryControlCenter")));
+//    partEditorRPC = new PartEditorRPC(rpcNode);
+//    rpcNode->enableRemoting(partEditorRPC);
+
+    setWindowTitle("元件编辑器");
 }
 
 PartEditor::~PartEditor()
@@ -93,11 +103,39 @@ void PartEditor::postInit()
 
     partLibManager = new PartLibManager;
 
+    // 初始化状态
+//    setSceneState(FSM::SelectState);
 }
 
 void PartEditor::onActionNewTriggered()
 {
-    createNewPart();
+    createNewPart(true);
+}
+
+void PartEditor::onActionPrePartTriggered()
+{
+    currentPartNumber -= 1;
+    emit partNumberChanged();
+
+    if(currentPartNumber == 0){
+        actionMenuPrePart->setEnabled(false);
+    }
+    if(!actionMenuNextPart->isEnabled()){
+        actionMenuNextPart->setEnabled(true);
+    }
+}
+
+void PartEditor::onActionNextPartTriggered()
+{
+    currentPartNumber += 1;
+    emit partNumberChanged();
+
+    if(!actionMenuPrePart->isEnabled()){
+        actionMenuPrePart->setEnabled(true);
+    }
+    if(currentPartNumber == partNumbers - 1){
+        actionMenuNextPart->setEnabled(false);
+    }
 }
 
 void PartEditor::onActionZoomInTriggered()
@@ -133,9 +171,17 @@ void PartEditor::init()
 
 void PartEditor::createMenuFile()
 {
-    QAction *actionMenuNew = new QAction("新建元件",this);
+    QAction *actionMenuNew = new QAction("新建",this);
     ui->menuFile->addAction(actionMenuNew);
     connect(actionMenuNew,&QAction::triggered,this,&PartEditor::onActionNewTriggered);
+
+    QAction *actionMenuSave = new QAction("保存",this);
+    ui->menuFile->addAction(actionMenuSave);
+
+    QAction *actionMenuSaveAs = new QAction("另存为",this);
+    ui->menuFile->addAction(actionMenuSaveAs);
+
+    ui->menuFile->addSeparator();
 
     QAction *actionMenuLibraryManager = new QAction("元件库",this);
     ui->menuFile->addAction(actionMenuLibraryManager);
@@ -146,16 +192,35 @@ void PartEditor::createMenuFile()
 
 void PartEditor::createMenuEdit()
 {
-    QAction *actionMenuUndo = new QAction("Undo",this);
+    QAction *actionMenuUndo = new QAction("取消",this);
     ui->menuEdit->addAction(actionMenuUndo);
 
-    QAction *actionMenuRedo = new QAction("Redo",this);
+    QAction *actionMenuRedo = new QAction("重做",this);
     ui->menuEdit->addAction(actionMenuRedo);
 
 }
 
 void PartEditor::createMenuView()
 {
+    QAction *actionMenuPartView = new QAction("元件",this);
+    ui->menuView->addAction(actionMenuPartView);
+
+    QAction *actionMenuPackageView = new QAction("分裂元件",this);
+    ui->menuView->addAction(actionMenuPackageView);
+
+    actionMenuPrePart = new QAction("上一个元件",this);
+    actionMenuPrePart->setEnabled(false);
+    ui->menuView->addAction(actionMenuPrePart);
+    connect(actionMenuPrePart,&QAction::triggered,this,&PartEditor::onActionPrePartTriggered);
+
+    actionMenuNextPart = new QAction("下一个元件",this);
+    ui->menuView->addAction(actionMenuNextPart);
+    actionMenuNextPart->setEnabled(false);
+    connect(actionMenuNextPart,&QAction::triggered,this,&PartEditor::onActionNextPartTriggered);
+
+
+    ui->menuView->addSeparator();
+
     QAction *actionMenuZoomIn = new QAction("放大",this);
     ui->menuView->addAction(actionMenuZoomIn);
     connect(actionMenuZoomIn,&QAction::triggered,this,&PartEditor::onActionZoomInTriggered);
@@ -168,7 +233,6 @@ void PartEditor::createMenuView()
     QAction *actionMenuZoomOne = new QAction("重置",this);
     ui->menuView->addAction(actionMenuZoomOne);
     connect(actionMenuZoomOne,&QAction::triggered,this,&PartEditor::onActionZoomOneTriggered);
-
 }
 
 void PartEditor::createMenuTools()
@@ -197,6 +261,14 @@ void PartEditor::createMenuSetup()
     connect(actionMenuColor,&QAction::triggered,this,[this](){
         settingColor->show();
     });
+
+    ui->menuSetup->addSeparator();
+
+    QAction *actionMenuPartProperty = new QAction("元件属性",this);
+    ui->menuSetup->addAction(actionMenuPartProperty);
+
+    QAction *actionMenuPackageProperty = new QAction("元信息",this);
+    ui->menuSetup->addAction(actionMenuPackageProperty);
 }
 
 void PartEditor::createMenuHelp()
@@ -208,43 +280,51 @@ void PartEditor::createMenuHelp()
 void PartEditor::createToolButtonMain()
 {
     // 创建主工具栏
-    QAction *actionButtonNew = new QAction(QIcon(":/new.png"),"新建",this);
+    QAction *actionButtonNew = new QAction(QIcon(":/icon/new.png"),"新建",this);
     ui->toolBarMain->addAction(actionButtonNew);
     connect(actionButtonNew,&QAction::triggered,this,&PartEditor::onActionNewTriggered);
 
-    QAction *actionButtonOpen = new QAction(QIcon(":/open.png"),"打开",this);
+    QAction *actionButtonOpen = new QAction(QIcon(":/icon/open.png"),"打开",this);
     ui->toolBarMain->addAction(actionButtonOpen);
 //    connect(actionButtonOpen,&QAction::triggered,this,&PartEditor::onActionOpenTriggered);
 
-    QAction *actionButtonSave = new QAction(QIcon(":/save.png"),"保存",this);
+    QAction *actionButtonSave = new QAction(QIcon(":/icon/save.png"),"保存",this);
     ui->toolBarMain->addAction(actionButtonSave);
 //    connect(actionButtonSave,&QAction::triggered,this,&PartEditor::onActionSaveTriggered);
 
     ui->toolBarMain->addSeparator();
 
     actionButtonUndo = undoStack->createUndoAction(this);
-    actionButtonUndo->setIcon(QIcon(":/undo.png"));
+    actionButtonUndo->setIcon(QIcon(":/icon/undo.png"));
     ui->toolBarMain->addAction(actionButtonUndo);
 
     actionButtonRedo = undoStack->createRedoAction(this);
-    actionButtonRedo->setIcon(QIcon(":/redo.png"));
+    actionButtonRedo->setIcon(QIcon(":/icon/redo.png"));
     ui->toolBarMain->addAction(actionButtonRedo);
 
     ui->toolBarMain->addSeparator();
 
-    QAction *actionButtonZoomIn = new QAction(QIcon(":/zoomIn.png"),"放大",this);
+    QAction *actionButtonZoomIn = new QAction(QIcon(":/icon/zoomIn.png"),"放大",this);
     ui->toolBarMain->addAction(actionButtonZoomIn);
     connect(actionButtonZoomIn,&QAction::triggered,this,&PartEditor::onActionZoomInTriggered);
 
-    QAction *actionButtonZoomOut = new QAction(QIcon(":/zoomOut.png"),"缩小",this);
+    QAction *actionButtonZoomOut = new QAction(QIcon(":/icon/zoomOut.png"),"缩小",this);
     ui->toolBarMain->addAction(actionButtonZoomOut);
     connect(actionButtonZoomOut,&QAction::triggered,this,&PartEditor::onActionZoomOutTriggered);
 
-    QAction *actionButtonZoomOne = new QAction(QIcon(":/zoomOne.png"),"重置",this);
+    QAction *actionButtonZoomOne = new QAction(QIcon(":/icon/zoomOne.png"),"重置",this);
     ui->toolBarMain->addAction(actionButtonZoomOne);
     connect(actionButtonZoomOne,&QAction::triggered,this,&PartEditor::onActionZoomOneTriggered);
 
+    ui->toolBarMain->addSeparator();
 
+    actionButtonSnapToGrid = new QAction(QIcon(":/icon/grid.png"),"栅格对齐",this);
+    actionButtonSnapToGrid->setCheckable(true);
+    actionButtonSnapToGrid->setChecked(true);
+    ui->toolBarMain->addAction(actionButtonSnapToGrid);
+    connect(actionButtonSnapToGrid,&QAction::triggered,this, [this] (bool checked) {
+        snapToGrid = checked;
+    });
 }
 
 void PartEditor::createToolButtonDrawing()
@@ -325,6 +405,9 @@ void PartEditor::createToolButtonDrawing()
     QAction *actionButtonPinItem = new QAction(QIcon(""),"管脚",this);
     actionButtonPinItem->setCheckable(true);
     ui->toolBarDrawing->addAction(actionButtonPinItem);
+    connect(actionButtonPinItem,&QAction::triggered,this, [this,actionButtonPinItem] () {
+        setSceneState(FSM::PinItemState,actionButtonPinItem);
+    });
 }
 
 void PartEditor::createStatusLabel()
@@ -332,12 +415,20 @@ void PartEditor::createStatusLabel()
 
 }
 
-void PartEditor::createNewPart()
+void PartEditor::createNewPart(bool manual)
 {
-    NewPartDialog newPartDialog;
-    newPartDialog.exec();
+    if(manual){
+        NewPartDialog newPartDialog;
+        newPartDialog.exec();
 
-    if(newPartDialog.result()){
+        if(newPartDialog.result()){
+            partView->createNewPart();
 
+            actionMenuPrePart->setEnabled(false);
+            actionMenuNextPart->setEnabled(partNumbers - 1);
+        }
+    }else{
+        partView->createNewPart();
     }
+
 }

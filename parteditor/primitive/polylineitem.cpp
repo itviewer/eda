@@ -7,7 +7,7 @@
 //#include "shapeitemchanggeometryecommand.h"
 
 
-#include "PartScene.h"
+#include "partscene.h"
 
 PolylineItem::PolylineItem(PartScene *scene, QGraphicsItem *parent)
     :QGraphicsPolylineItem(parent),

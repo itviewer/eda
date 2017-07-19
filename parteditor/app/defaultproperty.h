@@ -3,4 +3,6 @@
 
 
 extern const char *defaultPin;
+extern const char *defaultPart;
+
 #endif // DEFAULTPROPERTY_H

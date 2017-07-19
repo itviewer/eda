@@ -13,9 +13,9 @@ NewPageDialog::NewPageDialog(QWidget *parent) :
     connect(ui->lineEditName,&QLineEdit::textChanged,this,[this](){
         bool empty = ui->lineEditName->text().isEmpty();
         if(empty && ui->pushButtonOK->isEnabled()){
-            ui->pushButtonOK->setDisabled(false);
+            ui->pushButtonOK->setEnabled(false);
         }else if(!empty && !ui->pushButtonOK->isEnabled()){
-            ui->pushButtonOK->setDisabled(true);
+            ui->pushButtonOK->setEnabled(true);
         }
     });
 

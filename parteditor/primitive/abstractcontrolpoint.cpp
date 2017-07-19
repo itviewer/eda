@@ -1,6 +1,6 @@
 #include "abstractcontrolpoint.h"
 
-#include "PartScene.h"
+#include "partscene.h"
 
 AbstractControlPoint::AbstractControlPoint(QGraphicsItem *parent)
     :QGraphicsRectItem(QRectF(-5,-5,10,10),parent)

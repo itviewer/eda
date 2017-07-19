@@ -1,6 +1,6 @@
 #include "arcitemcontrolpoint.h"
 #include "arcitem.h"
-#include "PartScene.h"
+#include "partscene.h"
 
 ArcItemControlPoint::ArcItemControlPoint(ArcItem *parent)
     :AbstractControlPoint(parent),

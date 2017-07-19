@@ -37,9 +37,9 @@ PartSelector::PartSelector(const QString &title, QWidget *parent, Qt::WindowFlag
     connect(partTable, &PartTable::pressed, this, &PartSelector::onPartPressed);
     connect(partTable, &PartTable::doubleClicked, this, &PartSelector::onPartDoubleClicked);
 
-    //元件预览和package、pcb切换整体水平布局
+    //元件预览和package、供应商按钮整体水平布局
     QHBoxLayout *hLayout = new QHBoxLayout;
-    // package和pcb切换垂直布局
+    // package和供应商按钮垂直布局
     QVBoxLayout *vvLayout = new QVBoxLayout;
 
     partPreviewer = new PartPreviewer(contentWidget);
@@ -69,14 +69,14 @@ PartSelector::PartSelector(const QString &title, QWidget *parent, Qt::WindowFlag
     h3LayoutOfPackage->addWidget(labelType);
     h3LayoutOfPackage->addWidget(labelTypeValue);
 
-    QPushButton *toggleShape = new QPushButton("PCB 封装", contentWidget);
+    QPushButton *buttonProvider = new QPushButton("查找供应商", contentWidget);
 
     packageLayout->addLayout(h1LayoutOfPackage);
     packageLayout->addLayout(h2LayoutOfPackage);
     packageLayout->addLayout(h3LayoutOfPackage);
 
     vvLayout->addWidget(package);
-    vvLayout->addWidget(toggleShape);
+    vvLayout->addWidget(buttonProvider);
 
     hLayout->addWidget(partPreviewer);
     hLayout->addLayout(vvLayout);
@@ -100,7 +100,7 @@ void PartSelector::onPartPressed(const QModelIndex &index)
 {
     if (previewIndex != index) {
 
-        const QVariantHash result = partLib->get("SELECT md5,json FROM part_parts where part=?"
+        const QVariantHash result = partLib->get("select md5,json from part_parts where partid=?"
                                                  , {index.column() ? index.sibling(index.row(), 0).data() : index.data()});
 
         previewPart = json::parse(result.value("json").toString().toStdString());

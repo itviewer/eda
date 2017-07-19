@@ -7,7 +7,7 @@
 //#include "shapeitemchanggeometryecommand.h"
 
 
-#include "PartScene.h"
+#include "partscene.h"
 
 PolygonItem::PolygonItem(PartScene *scene, QGraphicsItem *parent)
     :QGraphicsPolygonItem(parent),

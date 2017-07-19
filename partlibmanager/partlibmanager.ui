@@ -9,86 +9,180 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>319</width>
-    <height>399</height>
+    <width>362</width>
+    <height>546</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Library Manager</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
-   <item row="0" column="0">
+   <property name="spacing">
+    <number>6</number>
+   </property>
+   <item row="0" column="0" colspan="3">
     <widget class="QGroupBox" name="groupBox">
      <property name="title">
-      <string>Library</string>
+      <string>原件库</string>
      </property>
      <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="0" colspan="2">
+      <item row="0" column="0" colspan="4">
        <widget class="QComboBox" name="comboBox"/>
       </item>
       <item row="1" column="0">
-       <widget class="QPushButton" name="buttonAddLibrary">
+       <widget class="QPushButton" name="pushButton">
+        <property name="text">
+         <string>新建</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QPushButton" name="pushButtonAddLibrary">
         <property name="text">
          <string>添加</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="1">
-       <widget class="QPushButton" name="buttonRemoveLibrary">
+      <item row="1" column="3">
+       <widget class="QPushButton" name="pushButtonRemoveLibrary">
         <property name="text">
          <string>删除</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QPushButton" name="pushButtonSelectLibrary">
+        <property name="text">
+         <string>选取</string>
         </property>
        </widget>
       </item>
      </layout>
     </widget>
    </item>
-   <item row="1" column="0">
-    <layout class="QHBoxLayout" name="horizontalLayout">
+   <item row="1" column="0" rowspan="5">
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <property name="topMargin">
+      <number>3</number>
+     </property>
      <item>
-      <widget class="QListView" name="listView"/>
+      <widget class="QLineEdit" name="lineEditSearch">
+       <property name="clearButtonEnabled">
+        <bool>true</bool>
+       </property>
+      </widget>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <item>
-        <widget class="QPushButton" name="buttonAddPart">
-         <property name="text">
-          <string>New</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="buttonEditPart">
-         <property name="text">
-          <string>Edit</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="buttonRemovePart">
-         <property name="text">
-          <string>Remvoe</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <spacer name="verticalSpacer">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>28</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-      </layout>
+      <widget class="QListView" name="listViewParts"/>
      </item>
     </layout>
    </item>
+   <item row="1" column="1">
+    <widget class="QPushButton" name="pushButtonSearch">
+     <property name="text">
+      <string>搜索</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2">
+    <widget class="QPushButton" name="pushButtonAdvanceSearch">
+     <property name="text">
+      <string>高级</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1" colspan="2">
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <property name="spacing">
+      <number>3</number>
+     </property>
+     <item>
+      <widget class="QGraphicsView" name="graphicsView">
+       <property name="minimumSize">
+        <size>
+         <width>160</width>
+         <height>160</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>160</width>
+         <height>160</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGraphicsView" name="graphicsView_2">
+       <property name="minimumSize">
+        <size>
+         <width>160</width>
+         <height>160</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>160</width>
+         <height>160</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="3" column="1">
+    <widget class="QPushButton" name="buttonAddPart">
+     <property name="text">
+      <string>新建</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="2">
+    <widget class="QPushButton" name="pushButton_2">
+     <property name="text">
+      <string>复制</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1">
+    <widget class="QPushButton" name="buttonEditPart">
+     <property name="text">
+      <string>编辑</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="2">
+    <widget class="QPushButton" name="pushButton_3">
+     <property name="text">
+      <string>导出</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1">
+    <widget class="QPushButton" name="buttonRemovePart">
+     <property name="text">
+      <string>删除</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="2">
+    <widget class="QPushButton" name="pushButton_4">
+     <property name="text">
+      <string>导入</string>
+     </property>
+    </widget>
+   </item>
   </layout>
+  <zorder>buttonAddPart</zorder>
+  <zorder>buttonEditPart</zorder>
+  <zorder>buttonRemovePart</zorder>
+  <zorder>groupBox</zorder>
+  <zorder>pushButton_2</zorder>
+  <zorder>pushButton_3</zorder>
+  <zorder>pushButton_4</zorder>
+  <zorder>pushButtonSearch</zorder>
+  <zorder>pushButtonAdvanceSearch</zorder>
+  <zorder></zorder>
  </widget>
  <resources/>
  <connections/>

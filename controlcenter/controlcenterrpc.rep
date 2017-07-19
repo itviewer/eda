@@ -1,0 +1,7 @@
+#include <QtCore>
+
+class ControlCenterRPC
+{
+    SLOT(void justtest());
+};
+

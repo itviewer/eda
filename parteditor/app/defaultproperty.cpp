@@ -45,3 +45,11 @@ const char *defaultPin = R"([
                              "pinShape": []
                          }
                         ])";
+
+const char *defaultPart = R"(
+                          {
+                               "partShape":[],
+                               "partText":[],
+                               "partPixmap":[]
+                           }
+                          )";

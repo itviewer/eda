@@ -2,7 +2,7 @@
 #include "polylineitem.h"
 #include <QGraphicsSceneMouseEvent>
 
-#include "PartScene.h"
+#include "partscene.h"
 
 PolylineItemControlPoint::PolylineItemControlPoint(PolylineItem *parent)
     :AbstractControlPoint(parent),

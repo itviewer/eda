@@ -12,5 +12,18 @@
         <file>dock/unpin_dockwidget_hover.png</file>
         <file>dock/unpin_dockwidget_normal.png</file>
         <file>dock/unpin_dockwidget_pressed.png</file>
+        <file>icon/copy.png</file>
+        <file>icon/cut.png</file>
+        <file>icon/grid.png</file>
+        <file>icon/new.png</file>
+        <file>icon/open.png</file>
+        <file>icon/paste.png</file>
+        <file>icon/redo.png</file>
+        <file>icon/save.png</file>
+        <file>icon/undo.png</file>
+        <file>icon/zoomAll.png</file>
+        <file>icon/zoomIn.png</file>
+        <file>icon/zoomOne.png</file>
+        <file>icon/zoomOut.png</file>
     </qresource>
 </RCC>

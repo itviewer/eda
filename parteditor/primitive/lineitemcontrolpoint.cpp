@@ -1,6 +1,6 @@
 #include "lineitemcontrolpoint.h"
 #include "lineitem.h"
-#include "PartScene.h"
+#include "partscene.h"
 
 LineItemControlPoint::LineItemControlPoint(LineItem* parent)
     : AbstractControlPoint(parent),

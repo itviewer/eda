@@ -1,7 +1,7 @@
 #include "cubicbezieritemcontrolpoint.h"
 #include "cubicbezieritem.h"
 
-#include "PartScene.h"
+#include "partscene.h"
 
 CubicBezierItemControlPoint::CubicBezierItemControlPoint(CubicBezierItem *parent)
     :AbstractControlPoint(parent),

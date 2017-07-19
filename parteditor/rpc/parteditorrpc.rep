@@ -1,0 +1,7 @@
+#include <QtCore>
+
+class PartEditorRPC
+{
+
+};
+

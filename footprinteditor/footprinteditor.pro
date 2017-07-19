@@ -1,8 +1,8 @@
 # 包含私有头文件 module-private
 QT += core gui widgets printsupport sql concurrent
 
-CONFIG(release, debug|release):TARGET = FootprintEditor
-CONFIG(debug, debug|release):TARGET = FootprintEditord
+CONFIG(release, debug|release):TARGET = footprinteditor
+CONFIG(debug, debug|release):TARGET = footprinteditord
 
 TEMPLATE = app
 

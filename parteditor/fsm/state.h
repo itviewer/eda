@@ -6,6 +6,7 @@
 #include "parteditor.h"
 #include "partscene.h"
 #include <QMenu>
+#include "aiderectitem.h"
 
 class State : public QObject
 {
@@ -20,6 +21,9 @@ public:
     QPointF mouseReleaseScenePoint;//每次release时赋值
     QPointF lastMouseReleaseScenePoint;//每次release后赋值
     QPointF mouseMoveScenePoint;
+
+    virtual void onEntry(PartScene *scene);
+    virtual void onExit();
 
     virtual bool mousePressEvent(QGraphicsSceneMouseEvent *mouseEvent);
     virtual bool mouseMoveEvent(QGraphicsSceneMouseEvent *mouseEvent);

@@ -314,7 +314,12 @@ bool StateWireSegmentItem::contextMenuEvent(QGraphicsSceneContextMenuEvent *menu
 
 bool StateWireSegmentItem::keyPressEvent(QKeyEvent *keyEvent)
 {
-    return false;
+    switch (keyEvent->key()) {
+        case Qt::Key_Escape: {
+            cancelDrawing();
+        }
+    }
+    return true;;
 }
 
 void StateWireSegmentItem::cancelDrawing()
@@ -330,11 +335,15 @@ void StateWireSegmentItem::cancelDrawing()
             nextWireSegmentItem = nullptr;
 
         }else{
+            // TODO 考虑更多
+            wireSegmentItem = nullptr;
+            nextWireSegmentItem = nullptr;
 
         }
 
         isDrawing = false;
     }
+    schEditor->setSceneState(FSM::SelectState);
 }
 
 void StateWireSegmentItem::endDrawing(NodeItem *endNode)

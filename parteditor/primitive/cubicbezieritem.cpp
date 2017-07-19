@@ -6,7 +6,7 @@
 //#include "shapeitemmovecommand.h"
 //#include "shapeitemchanggeometryecommand.h"
 
-#include "PartScene.h"
+#include "partscene.h"
 
 CubicBezierItem::CubicBezierItem(PartScene *scene, QGraphicsItem *parent)
     :QGraphicsPathItem(parent),

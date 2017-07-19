@@ -3,7 +3,7 @@
 #include <QGraphicsSceneMouseEvent>
 #include <QDebug>
 
-#include "PartScene.h"
+#include "partscene.h"
 
 PolygonItemControlPoint::PolygonItemControlPoint(PolygonItem *parent)
     :AbstractControlPoint(parent),

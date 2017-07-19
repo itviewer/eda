@@ -3,6 +3,7 @@
 
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QSqlQueryModel>
 #include "db.h"
 
 PartLibManager::PartLibManager(QWidget *parent) :
@@ -11,26 +12,51 @@ PartLibManager::PartLibManager(QWidget *parent) :
 {
     ui->setupUi(this);
     setWindowFlags(Qt::WindowCloseButtonHint);
+    ui->lineEditSearch->setFocus();
+
+    model = new QSqlQueryModel(this);
+
+    ui->listViewParts->setModel(model);
+
+
+    // TODO 保存并恢复设置
+    currentLibIndex = 0;
 
     updatePartLibrary();
+    updatePartList();
 
-    ui->buttonRemoveLibrary->setEnabled(false);
+    ui->listViewParts->setModelColumn(1);
 
-    connect(ui->buttonAddLibrary,&QPushButton::clicked,
+    ui->pushButtonRemoveLibrary->setEnabled(false);
+
+    connect(ui->pushButtonAddLibrary,&QPushButton::clicked,
             this,&PartLibManager::onButtonAddLibraryClicked);
 
-    connect(ui->buttonRemoveLibrary,&QPushButton::clicked,
+    connect(ui->pushButtonRemoveLibrary,&QPushButton::clicked,
             this,&PartLibManager::onButtonRemoveLibraryClicked);
 
     connect(ui->comboBox, static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),this,[this](int index){
         if(index){
-            if(!ui->buttonRemoveLibrary->isEnabled()){
-               ui->buttonRemoveLibrary->setEnabled(true);
+            if(!ui->pushButtonRemoveLibrary->isEnabled()){
+               ui->pushButtonRemoveLibrary->setEnabled(true);
             }
         }else{
-            ui->buttonRemoveLibrary->setEnabled(false);
+            ui->pushButtonRemoveLibrary->setEnabled(false);
         }
+        currentLibIndex = index;
+        updatePartList(getWhere());
     });
+
+    connect(this,&PartLibManager::partLibraryChanged,this,[this](){
+        updatePartLibrary();
+        updatePartList(getWhere());
+    });
+
+    connect(ui->lineEditSearch,&QLineEdit::returnPressed,
+            this,&PartLibManager::onButtonSearchClicked);
+
+    connect(ui->pushButtonSearch,&QPushButton::clicked,
+            this,&PartLibManager::onButtonSearchClicked);
 }
 
 PartLibManager::~PartLibManager()
@@ -41,27 +67,28 @@ PartLibManager::~PartLibManager()
 void PartLibManager::onButtonAddLibraryClicked()
 {
     const QString filename = QFileDialog::getOpenFileName(this, "打开元件库",
-                                                          "H:/eda/eda/SchematicEditor/test",
+                                                          "H:/eda/eda/specification",
                                                           "元件库 (*.json *.sch)");
     if(!filename.isEmpty()) {
         json library;
+        const QString baseName = QFileInfo(filename).baseName();
         bool success = loadJsonDocument(filename,library);
 
         const QVariantHash result = partLib->get("select libid from part_librarys where libpath=?", {filename});
         int libid;
         // 库不存在则添加 已存在清空该库元件
         if(result.isEmpty()) {
-            libid = partLib->insert("insert into part_librarys (libpath) values (?)", {filename});
-            updatePartLibrary();
+            libid = partLib->insert("insert into part_librarys (libpath,modifiedtime) values (?,?)", {filename,library["libProperty"]["modifiedtime"]});
         } else {
             libid = result.value("libid").toInt();
             partLib->remove("delete from part_parts where libid=?", {libid});
         }
 
         // 添加元件
-        for(auto &p:library) {
-            QVariantList bindValue({p["partName"],libid,filename,p["footprint"],md5(p["partName"],filename),QString::fromStdString(p.dump())});
-            partLib->insert("insert into part_parts (partname,libid,libpath,footprint,md5,json) VALUES (?,?,?,?,?,?)",bindValue);
+        for(auto &p:library["parts"]) {
+            const QString partName = p["partName"];
+            QVariantList bindValue({partName,partName + ":" + baseName,libid,filename,p["footprint"],md5(p["partName"],filename),QString::fromStdString(p.dump())});
+            partLib->insert("insert into part_parts (partname,partalias,libid,libpath,footprint,md5,json) VALUES (?,?,?,?,?,?,?)",bindValue);
         }
 
         partLib->dump("H:/eda/sch.db");
@@ -82,10 +109,14 @@ void PartLibManager::onButtonRemoveLibraryClicked()
         // 外键自动删除元件
         partLib->remove("delete from part_librarys where libid=?",{libid});
 
-        updatePartLibrary();
         partLib->dump("H:/eda/sch.db");
         emit partLibraryChanged();
     }
+}
+
+void PartLibManager::onButtonSearchClicked()
+{
+    updatePartList(getWhere());
 }
 
 void PartLibManager::updatePartLibrary()
@@ -96,8 +127,24 @@ void PartLibManager::updatePartLibrary()
         ui->comboBox->addItem(r.value("libpath").toString(),r.value("libid"));
     }
     if(ui->comboBox->count() > 1){
-        ui->buttonRemoveLibrary->setEnabled(true);
+        ui->pushButtonRemoveLibrary->setEnabled(true);
     }else{
-        ui->buttonRemoveLibrary->setEnabled(false);
+        ui->pushButtonRemoveLibrary->setEnabled(false);
     }
+}
+
+void PartLibManager::updatePartList(const QString &where)
+{
+    model->setQuery("select partid,partalias from part_parts" + where,partLib->database());
+}
+
+QString PartLibManager::getWhere() const
+{
+    QString where = "";
+    where += currentLibIndex ? QString(" where libid=%1").arg(ui->comboBox->currentData().toInt()) : "";
+
+    QString searchText = ui->lineEditSearch->text();
+    where += !searchText.isEmpty() ? (where.startsWith(" where") ? " and ": " where ") + QString("partname like '\%%1\%'").arg(searchText) : "";
+
+    return where;
 }

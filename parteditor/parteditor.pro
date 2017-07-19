@@ -1,14 +1,19 @@
 # 包含私有头文件 module-private
-QT += core gui widgets printsupport sql concurrent
+QT += core gui widgets printsupport sql concurrent remoteobjects
 
-CONFIG(release, debug|release):TARGET = PartEditor
-CONFIG(debug, debug|release):TARGET = PartEditord
+CONFIG(release, debug|release):TARGET = parteditor
+CONFIG(debug, debug|release):TARGET = parteditord
 
 TEMPLATE = app
 
 #DEFINES += QT_NO_DEBUG_OUTPUT
 #DEFINES += JSON_NOEXCEPTION
 CONFIG += c++11
+
+REPC_SOURCE = rpc/parteditorrpc.rep
+
+REPC_REPLICA += \
+    rpc/controlcenterrpc.rep
 
 win32 {
     QMAKE_CXXFLAGS += -utf-8
@@ -17,7 +22,7 @@ win32 {
 DESTDIR = $$PWD/../out
 
 include(../common/common.pri)
-include(../PartLibManager/PartLibManager.pri)
+include(../partlibmanager/partlibmanager.pri)
 
 INCLUDEPATH += \
     app \
@@ -25,7 +30,8 @@ INCLUDEPATH += \
     primitive \
     component \
     setting \
-    dialog
+    dialog \
+    rpc
 
 FORMS += \
     app/parteditor.ui \
@@ -78,7 +84,13 @@ HEADERS += \
     setting/settingcolor.h \
     setting/settingfont.h \
     app/partio.h \
-    dialog/newpartdialog.h
+    dialog/newpartdialog.h \
+    rpc/parteditorrpc.h \
+    primitive/aiderectitem.h \
+    primitive/aiderectitemcontrolpoint.h \
+    app/packagescene.h \
+    fsm/statepinitem.h \
+    component/pinitem.h
 
 SOURCES += \
     app/main.cpp \
@@ -125,7 +137,13 @@ SOURCES += \
     setting/settingcolor.cpp \
     setting/settingfont.cpp \
     app/partio.cpp \
-    dialog/newpartdialog.cpp
+    dialog/newpartdialog.cpp \
+    rpc/parteditorrpc.cpp \
+    primitive/aiderectitem.cpp \
+    primitive/aiderectitemcontrolpoint.cpp \
+    app/packagescene.cpp \
+    fsm/statepinitem.cpp \
+    component/pinitem.cpp
 
 RESOURCES += \
     test/test.qrc

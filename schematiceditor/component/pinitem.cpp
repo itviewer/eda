@@ -26,7 +26,7 @@ PinItem::PinItem(SchematicScene *scene, const json &j, QGraphicsItem *parent)
     QLineF line;
     line.setP1(j["pinLine"]["geometry"][0]);
     line.setP2(j["pinLine"]["geometry"][1]);
-    lineItem = new LineItem(schScene,this);
+    lineItem = new LineItem(scene,this);
     lineItem->setLine(line);
 //    for (auto& shape: j["pinShape"]) {
 //        switch (int(shape["type"])) {
@@ -40,12 +40,12 @@ PinItem::PinItem(SchematicScene *scene, const json &j, QGraphicsItem *parent)
 //        }
 //    }
 
-    pinNameItem= new TextItem(schScene,j["pinName"]["text"],this);
+    pinNameItem= new TextItem(scene,j["pinName"]["text"],this);
     pinNameItem->setPos(j["pinName"]["pos"]);
 
     shapeRect = lineItem->boundingRect().adjusted(0,-4,0,4);
 
-    port = new PortItem(schScene,j["pinPort"],this);
+    port = new PortItem(scene,j["pinPort"],this);
 }
 
 PinItem::~PinItem()
@@ -122,14 +122,6 @@ QVariant PinItem::itemChange(QGraphicsItem::GraphicsItemChange change, const QVa
             break;
     }
     return QGraphicsItem::itemChange(change, value);
-}
-
-void PinItem::keyPressEvent(QKeyEvent *event)
-{
-    if(event->key() == Qt::Key_Space){
-        setRotation(rotation() - 90);
-        event->accept();
-    }
 }
 
 //bool PinItem::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
