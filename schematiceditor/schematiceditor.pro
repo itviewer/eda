@@ -13,6 +13,15 @@ CONFIG += c++11
 
 win32 {
     QMAKE_CXXFLAGS += -utf-8
+
+    RC_FILE = resource.rc
+#    VERSION = 0.9.0.0
+#    RC_ICONS = schematiceditor.ico
+#    RC_LANG = 0x0804
+#    QMAKE_TARGET_PRODUCT = "Idea EDA"
+#    QMAKE_TARGET_COMPANY = "北京梦飞翔宇科技有限公司"
+#    QMAKE_TARGET_DESCRIPTION = "原理图编辑器"
+#    QMAKE_TARGET_COPYRIGHT = "Copyright 2014-2017 北京梦飞翔宇科技有限公司. All rights reserved."
 }
 
 DESTDIR = $$PWD/../out
@@ -80,7 +89,6 @@ HEADERS += \
     setting/globalsetting.h \
     app/tabcontainer.h \
     app/schematicio.h \
-    app/setting.h \
     cmd/shapeitemaddcommand.h \
     cmd/shapeitemremovecommand.h \
     cmd/shapeitemmovecommand.h \
@@ -147,7 +155,8 @@ HEADERS += \
     navigator/netnavigator.h \
     navigator/schtreewidgetitem.h \
     component/pageborderitem.h \
-    dialog/newpagedialog.h
+    dialog/newpagedialog.h \
+    app/settingio.h
 
 SOURCES += \
     app/global.cpp \
@@ -188,7 +197,6 @@ SOURCES += \
     setting/globalsetting.cpp \
     app/tabcontainer.cpp \
     app/schematicio.cpp \
-    app/setting.cpp \
     cmd/shapeitemaddcommand.cpp \
     cmd/shapeitemremovecommand.cpp \
     cmd/shapeitemmovecommand.cpp \
@@ -253,8 +261,15 @@ SOURCES += \
     navigator/netnavigator.cpp \
     navigator/schtreewidgetitem.cpp \
     component/pageborderitem.cpp \
-    dialog/newpagedialog.cpp
+    dialog/newpagedialog.cpp \
+    app/settingio.cpp
 
 RESOURCES += \
     test/test.qrc \
     resources/resources.qrc
+
+win32:CONFIG(release, debug|release): LIBS += -L$$DESTDIR/ -lparteditor
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$DESTDIR/ -lparteditord
+else:unix: LIBS += -L$$DESTDIR/ -lparteditor
+
+

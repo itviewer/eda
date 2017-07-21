@@ -33,14 +33,14 @@ PartEditor::PartEditor(QWidget *parent) :
 
     createNewPart();
 
-    connect(this,&PartEditor::launched,
-            this,&PartEditor::postInit);
-
 //    rpcNode = new QRemoteObjectHost(QUrl(QString("local:PartEditor:%1").arg(qApp->applicationPid())),QUrl(QStringLiteral("local:RegistryControlCenter")));
 //    partEditorRPC = new PartEditorRPC(rpcNode);
 //    rpcNode->enableRemoting(partEditorRPC);
 
     setWindowTitle("元件编辑器");
+
+    // 非独立程序没法使用launched()信号
+    postInit();
 }
 
 PartEditor::~PartEditor()
@@ -82,6 +82,7 @@ void PartEditor::setSceneState(const FSM &state, QAction *action)
 void PartEditor::closeEvent(QCloseEvent *event)
 {
 
+    emit aboutToQuit();
     QMainWindow::closeEvent(event);
 }
 
@@ -103,7 +104,7 @@ void PartEditor::postInit()
 
     partLibManager = new PartLibManager;
 
-    // 初始化状态
+    // createNewPart已调用这里不再需要
 //    setSceneState(FSM::SelectState);
 }
 

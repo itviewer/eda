@@ -7,6 +7,7 @@ class PartItem;
 class PortItem;
 class SchematicScene;
 class SchematicEditor;
+class PartEditor;
 class StateMachine;
 class Db;
 class QUndoCommand;
@@ -189,6 +190,7 @@ enum Angle
  */
 const int maxPageWidth = 5000;
 const int maxPageHeight = 5000;
+const QString schSettingFileName = "schsetting.json";
 
 /**
  * ***********************************************************************
@@ -202,6 +204,7 @@ extern bool snapToGrid;
 extern colorScheme schColor;
 
 extern SchematicEditor *schEditor;
+extern PartEditor *partEditor;
 extern StateMachine *fsm;
 extern Db *partLib;
 
@@ -227,6 +230,15 @@ extern int designGridSize;
 extern int displayGridSize;
 extern QString currentColorScheme;
 
+// 设置
+extern json schSetting;
+extern json &schSettingGeneral;
+extern json &schGlobalSettingGeneral;
+extern json &schGlobalSettingDesign;
+extern json &schGlobalSettingText;
+extern json &schGlobalSettingLineWidth;
+extern json &schGlobalSettingColorScheme;
+
 // 按字符串排序没有意义
 extern QHash<QString,SchematicScene *> schPages;
 
@@ -239,10 +251,6 @@ extern json &schPowerLib;
 extern json &schOffpageLib;
 extern json &schPartLib;
 extern json &pages;
-
-// 设置
-extern json globalSetting;
-extern json colorSchemes;
 
 // 元件
 // 前缀及其最大索引

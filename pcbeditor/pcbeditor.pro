@@ -13,6 +13,7 @@ CONFIG += c++11
 
 win32 {
     QMAKE_CXXFLAGS += -utf-8
+    RC_FILE = resource.rc
 }
 
 DESTDIR = $$PWD/../out

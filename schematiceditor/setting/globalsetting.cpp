@@ -9,31 +9,50 @@
 GlobalSetting::GlobalSetting(QWidget *parent) :
     QWidget(parent)
 {
-    setFixedSize(651, 500);
+    setWindowModality(Qt::ApplicationModal);
+    setFixedSize(550, 450);
     setWindowTitle("全局设置");
     gridLayout = new QGridLayout(this);
-    gridLayout->setSpacing(3);
-    gridLayout->setContentsMargins(0, 0, 0, 0);
+    gridLayout->setSpacing(2);
+    gridLayout->setContentsMargins(0, 0, 0, 5);
 
     treeWidget = new QTreeWidget(this);
     treeWidget->header()->setVisible(false);
-    treeWidget->setMaximumWidth(210);
+    treeWidget->setMaximumWidth(150);
 
     gridLayout->addWidget(treeWidget, 0, 0, 1, 1);
 
     stackedWidget = new QStackedWidget(this);
     gridLayout->addWidget(stackedWidget, 0, 1, 1, 2);
 
+    QFrame *frame = new QFrame(this);
+    frame->setFrameShadow(QFrame::Sunken);
+    frame->setFrameShape(QFrame::HLine);
+    gridLayout->addWidget(frame, 1, 0, 1, 3);
+
+    QHBoxLayout *hLayout = new QHBoxLayout;
+    buttonOk = new QPushButton("确定",this);
+    buttonApply = new QPushButton("应用",this);
+    buttonCancel = new QPushButton("取消",this);
+
+    hLayout->addWidget(buttonOk);
+    hLayout->addWidget(buttonApply);
+    hLayout->addWidget(buttonCancel);
+
+    gridLayout->addLayout(hLayout,2,1,1,2,Qt::AlignHCenter);
+
+    connect(buttonCancel,&QPushButton::clicked, this, &GlobalSetting::close);
+
     init();
 }
 
 void GlobalSetting::init()
 {
-    QTreeWidgetItem *generalTreeItem = new QTreeWidgetItem(QStringList("General"));
-    QTreeWidgetItem *designTreeItem = new QTreeWidgetItem(QStringList("Design"));
-    QTreeWidgetItem *textTreeItem = new QTreeWidgetItem(QStringList("Text"));
-    QTreeWidgetItem *lineWidthTreeItem = new QTreeWidgetItem(QStringList("Line Width"));
-    QTreeWidgetItem *colorSchemeTreeItem = new QTreeWidgetItem(QStringList("Color Scheme"));
+    QTreeWidgetItem *generalTreeItem = new QTreeWidgetItem({("常规")});
+    QTreeWidgetItem *designTreeItem = new QTreeWidgetItem({("设计")});
+    QTreeWidgetItem *textTreeItem = new QTreeWidgetItem({("文本")});
+    QTreeWidgetItem *lineWidthTreeItem = new QTreeWidgetItem({("线宽")});
+    QTreeWidgetItem *colorSchemeTreeItem = new QTreeWidgetItem({("颜色")});
 
     GlobalSettingGeneral *globalSettingGeneral = new GlobalSettingGeneral;
     stackedWidget->addWidget(globalSettingGeneral);

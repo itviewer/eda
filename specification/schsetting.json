@@ -1,0 +1,40 @@
+{
+    "globalSettingGeneral":{
+
+    },
+    "globalSettingDesign":{
+
+    },
+    "globalSettingText":{
+
+    },
+    "globalSettingLineWidth":{
+
+    },
+    "globalSettingColorScheme":{
+        "colorScheme":["Idea","OrCAD","PADS"],
+        "schemes":{
+            "Idea":{
+                "background":"#408080",
+                "display":"#000000",
+                "selection":"#FF00FF",
+                "drawing":"#BF7F7F"
+            },
+            "OrCAD":{
+                "background":"#408080",
+                "display":"#000000",
+                "selection":"#FF00FF",
+                "drawing":"#BF7F7F"
+            },
+            "PADS":{
+                "background":"#408080",
+                "display":"#000000",
+                "selection":"#FF00FF",
+                "drawing":"#BF7F7F"
+            }
+        }
+    },
+    "general":{
+        "lastUsedColorScheme":"Idea"
+    }
+}

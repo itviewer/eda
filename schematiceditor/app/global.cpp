@@ -14,6 +14,7 @@ bool snapToGrid = true;
 colorScheme schColor;
 
 SchematicEditor *schEditor = nullptr;
+PartEditor *partEditor = nullptr;
 StateMachine *fsm = nullptr;
 Db *partLib = nullptr;
 
@@ -40,6 +41,14 @@ int designGridSize = 10;
 int displayGridSize = 10;
 QString currentColorScheme = "orcad";
 
+
+json schSetting = json::parse(defaultSetting);
+json &schSettingGeneral = schSetting["general"];
+json &schGlobalSettingGeneral = schSetting["globalSettingGeneral"];
+json &schGlobalSettingDesign = schSetting["globalSettingDesign"];
+json &schGlobalSettingText = schSetting["globalSettingText"];
+json &schGlobalSettingLineWidth = schSetting["globalSettingLineWidth"];
+json &schGlobalSettingColorScheme = schSetting["globalSettingColorScheme"];
 
 // 依靠页面名称单独保存原理图页 不能靠数组索引（删除页面后索引改变）
 QHash<QString,SchematicScene *> schPages;

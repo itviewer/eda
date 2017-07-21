@@ -4,7 +4,7 @@
 
 int main(int argc, char *argv[])
 {
-    QApplication::setStyle(QStyleFactory::create("fusion"));
+//    QApplication::setStyle(QStyleFactory::create("fusion"));
 //    QPalette palette;
 //    palette.setColor(QPalette::Window, QColor(53,53,53));
 //    palette.setColor(QPalette::WindowText, Qt::white);

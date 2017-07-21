@@ -3,7 +3,7 @@
 #include "schematicscene.h"
 #include "tabcontainer.h"
 #include "schematicio.h"
-#include "setting.h"
+#include "settingio.h"
 #include "defaultproperty.h"
 
 #include "ui_schematiceditor.h"
@@ -24,6 +24,8 @@
 #include "navigator.h"
 #include <QtConcurrent>
 #include <QFutureWatcher>
+
+#include "../parteditor/app/parteditor.h"
 
 static bool savePageMetadata(SchematicScene *page)
 {
@@ -79,7 +81,7 @@ SchematicEditor::SchematicEditor(QWidget *parent) :
 
     createNewSchPage();
 
-    setWindowTitle("Idea CAD");
+    setWindowTitle("IdeaEDA-iCAD-未命名原理图");
 }
 
 SchematicEditor::~SchematicEditor()
@@ -88,6 +90,8 @@ SchematicEditor::~SchematicEditor()
     delete globalSetting;
     delete partLibManager;
     delete ui;
+
+    delete partEditor;
 }
 
 SchematicScene *SchematicEditor::currentScene() const
@@ -115,6 +119,9 @@ void SchematicEditor::postInit()
     connect(&schSaveWatcher,&QFutureWatcher<void>::finished,
             this,&SchematicEditor::onMetadataSaved);
 
+    partEditor = new PartEditor;
+    // TODO 是否有必要在PartEditor中反向包含SchematicEditor以便直接调用
+    connect(partEditor,&PartEditor::aboutToQuit,this,&SchematicEditor::show);
 }
 
 void SchematicEditor::onMetadataSaved()
@@ -236,6 +243,13 @@ void SchematicEditor::onActionZoomHomeTriggered()
     currentSchView->zoomHome();
 }
 
+void SchematicEditor::onActionPartEditorTriggered()
+{
+    // 先隐藏SchematicEditor再显示partEditor有可能因程序先失去焦点变为非活动程序
+    partEditor->show();
+    hide();
+}
+
 void SchematicEditor::addDockWidgetToolBar(Qt::DockWidgetArea area, DockWidgetToolBar *toolbar)
 {
     dockToolBars.insert(area,toolbar);
@@ -347,7 +361,7 @@ void SchematicEditor::init()
     createToolButtonWiring();
     createToolButtonDrawing();
 
-    new Setting(this);
+    new SettingIO(this);
 }
 
 void SchematicEditor::createMenuFile()
@@ -364,15 +378,6 @@ void SchematicEditor::createMenuFile()
     ui->menuFile->addAction(actionMenuClose);
     connect(actionMenuClose,&QAction::triggered,this,&SchematicEditor::onActionCloseTriggered);
 
-    QMenu *menuRecentProjects = new QMenu("最近使用",this);
-
-    menuRecentProjects->addSeparator();
-
-    QAction *actionMenuCleanRecent = new QAction("清除",this);
-    menuRecentProjects->addAction(actionMenuCleanRecent);
-
-    ui->menuFile->addMenu(menuRecentProjects);
-
     ui->menuFile->addSeparator();
 
     QAction *actionMenuSaveAll = new QAction("保存",this);
@@ -385,19 +390,19 @@ void SchematicEditor::createMenuFile()
 
     QMenu *menuImport = new QMenu("导入",this);
 
-    QAction *actionMenuImportPads = new QAction("PADS Logic ASCII 9.0",this);
-    menuImport->addAction(actionMenuImportPads);
+//    QAction *actionMenuImportPads = new QAction("PADS Logic ASCII 9.0",this);
+//    menuImport->addAction(actionMenuImportPads);
 
     ui->menuFile->addMenu(menuImport);
 
     QMenu *menuExport = new QMenu("导出",this);
-    QAction *actionMenuExportPads = new QAction("PADS Logic ASCII 9.0",this);
-    menuExport->addAction(actionMenuExportPads);
+//    QAction *actionMenuExportPads = new QAction("PADS Logic ASCII 9.0",this);
+//    menuExport->addAction(actionMenuExportPads);
 
 
     ui->menuFile->addMenu(menuExport);
 
-    QAction *actionMenuPDF = new QAction("生成PDF",this);
+    QAction *actionMenuPDF = new QAction("智能PDF",this);
     ui->menuFile->addAction(actionMenuPDF);
 //    connect(actionMenuPDF,&QAction::triggered,this,&SchematicEditor::onActionSaveAsTriggered);
 
@@ -445,8 +450,9 @@ void SchematicEditor::createMenuView()
 
 void SchematicEditor::createMenuTools()
 {
-    QAction *actionNewPart = new QAction("元件编辑器",this);
-    ui->menuTools->addAction(actionNewPart);
+    QAction *actionMenuPartEditor = new QAction("元件编辑器",this);
+    ui->menuTools->addAction(actionMenuPartEditor);
+    connect(actionMenuPartEditor,&QAction::triggered,this,&SchematicEditor::onActionPartEditorTriggered);
 }
 
 void SchematicEditor::createMenuSetup()

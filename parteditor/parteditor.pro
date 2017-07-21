@@ -4,7 +4,9 @@ QT += core gui widgets printsupport sql concurrent remoteobjects
 CONFIG(release, debug|release):TARGET = parteditor
 CONFIG(debug, debug|release):TARGET = parteditord
 
-TEMPLATE = app
+TEMPLATE = lib
+
+DEFINES += PARTEDITOR_LIBRARY
 
 #DEFINES += QT_NO_DEBUG_OUTPUT
 #DEFINES += JSON_NOEXCEPTION
@@ -17,6 +19,7 @@ REPC_REPLICA += \
 
 win32 {
     QMAKE_CXXFLAGS += -utf-8
+    RC_FILE = resource.rc
 }
 
 DESTDIR = $$PWD/../out
@@ -90,10 +93,10 @@ HEADERS += \
     primitive/aiderectitemcontrolpoint.h \
     app/packagescene.h \
     fsm/statepinitem.h \
-    component/pinitem.h
+    component/pinitem.h \
+    app/parteditor_global.h
 
 SOURCES += \
-    app/main.cpp \
     app/parteditor.cpp \
     app/partview.cpp \
     app/global.cpp \

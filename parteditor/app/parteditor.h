@@ -3,6 +3,7 @@
 
 #include <QtWidgets>
 #include "global.h"
+#include "parteditor_global.h"
 
 namespace Ui {
     class PartEditor;
@@ -20,7 +21,7 @@ class PartLibManager;
 class QRemoteObjectHost;
 class PartEditorRPC;
 
-class PartEditor : public QMainWindow
+class PARTEDITORSHARED_EXPORT PartEditor : public QMainWindow
 {
     Q_OBJECT
 
@@ -37,7 +38,8 @@ public:
     void setSceneState(const FSM &state,QAction *action = nullptr);
 
 signals:
-    void launched();
+//    void launched();
+    void aboutToQuit();
     void sceneStateChanged(const FSM &state);
     void partNumberChanged();
 

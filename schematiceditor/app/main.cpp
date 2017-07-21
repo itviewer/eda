@@ -1,10 +1,14 @@
 #include "schematiceditor.h"
 #include <QApplication>
 #include <QStyleFactory>
+#include <QSplashScreen>
+
 
 int main(int argc, char *argv[])
 {
-    QApplication::setStyle(QStyleFactory::create("fusion"));
+    QApplication::setApplicationName("IdeaEDA");
+
+//    QApplication::setStyle(QStyleFactory::create("fusion"));
 //    QPalette palette;
 //    palette.setColor(QPalette::Window, QColor(53,53,53));
 //    palette.setColor(QPalette::WindowText, Qt::white);
@@ -22,9 +26,15 @@ int main(int argc, char *argv[])
 //    QApplication::setPalette(palette);
 
     QApplication a(argc, argv);
-    SchematicEditor w;
-    w.show();
-    emit w.launched();
+
+//    QPixmap pixmap(":/splash.png");
+//    QSplashScreen splash(pixmap);
+//    splash.show();
+
+    SchematicEditor schematicEditor;
+    schematicEditor.show();
+//    splash.finish(&schematicEditor);
+    emit schematicEditor.launched();
 
     return a.exec();
 }

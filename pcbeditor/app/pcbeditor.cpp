@@ -44,7 +44,7 @@ PCBEditor::PCBEditor(QWidget *parent) :
     connect(this,&PCBEditor::launch,
             this,&PCBEditor::postInit);
 
-    setWindowTitle("Idea PCB");
+    setWindowTitle("IdeaEDA-iPCB");
 }
 
 PCBEditor::~PCBEditor()

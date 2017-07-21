@@ -82,6 +82,7 @@ private slots:
     void onActionZoomOneTriggered();
     void onActionZoomHomeTriggered();
 
+    void onActionPartEditorTriggered();
 
 private:
     Ui::SchematicEditor *ui;

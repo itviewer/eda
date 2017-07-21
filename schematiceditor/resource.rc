@@ -1,0 +1,36 @@
+#include <windows.h>
+
+IDI_ICON1	ICON	DISCARDABLE	"schematiceditor.ico"
+
+VS_VERSION_INFO VERSIONINFO
+	FILEVERSION 0,9,0,0
+	PRODUCTVERSION 0,9,0,0
+	FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+	FILEFLAGS VS_FF_DEBUG
+#else
+	FILEFLAGS 0x0L
+#endif
+	FILEOS VOS__WINDOWS32
+	FILETYPE VFT_DLL
+	FILESUBTYPE 0x0L
+	BEGIN
+		BLOCK "StringFileInfo"
+		BEGIN
+			BLOCK "080404b0"
+			BEGIN
+				VALUE "CompanyName", "北京梦飞翔宇科技有限公司\0"
+				VALUE "FileDescription", "原理图编辑器\0"
+				VALUE "FileVersion", "0.9.0.0\0"
+				VALUE "LegalCopyright", "Copyright 2014-2017 北京梦飞翔宇科技有限公司. All rights reserved.\0"
+				VALUE "ProductName", "Idea EDA\0"
+				VALUE "ProductVersion", "0.9.0.0\0"
+			END
+		END
+		BLOCK "VarFileInfo"
+		BEGIN
+			VALUE "Translation", 0x0804, 1200
+		END
+	END
+/* End of Version info */
+

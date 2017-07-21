@@ -9,6 +9,18 @@ const char *defaultSchematic = R"(
                             }
                          )";
 
+const char *defaultSetting = R"(
+                             {
+                                 "globalSettingGeneral":{},
+                                 "globalSettingDesign":{},
+                                 "globalSettingText":{},
+                                 "globalSettingLineWidth":{},
+                                 "globalSettingColorScheme":{},
+                                 "general":{}
+                             }
+
+                             )";
+
 const char *defaultSchPage = R"(
                              {
                                   "pageProperty":{},
@@ -28,25 +40,6 @@ const char *defaultSchProperty = R"(
                                      "specVersion": 1.0
                                  }
                                  )";
-
-
-const char *colorSchemeOrCAD =  R"(
-                                   {
-                                       "background":"#408080",
-                                       "display":"#000000",
-                                       "selection":"#FF00FF",
-                                       "drawing":"#BF7F7F"
-                                   }
-                               )";
-
-const char *colorSchemePads =  R"(
-                                   {
-                                       "background":"#408080",
-                                       "display":"#000000",
-                                       "selection":"#FF00FF",
-                                       "drawing":"#BF7F7F"
-                                   }
-                               )";
 
 const char *defaultPin = R"([
                          {

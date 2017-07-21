@@ -16,6 +16,9 @@ private:
     QGridLayout *gridLayout;
     QTreeWidget *treeWidget;
     QStackedWidget *stackedWidget;
+    QPushButton *buttonOk;
+    QPushButton *buttonCancel;
+    QPushButton *buttonApply;
 
     inline void init();
 
