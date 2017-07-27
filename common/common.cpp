@@ -78,13 +78,14 @@ bool loadJsonDocument(const QString &filename, json &j, const JsonFormat &format
         //直接返回而不是先赋值给临时变量 对大文件可避免一次复制
         //TODO 是否能取消返回值自动将key排序
         if(format == JsonFormat::Json) {
-            j = json::parse(loadFile.readAll().toStdString());
+            j.merge(json::parse(loadFile.readAll().toStdString()));
             return true;
         } else {
-            j = json::parse(loadFile.readAll().toStdString());
+            j.merge(json::parse(loadFile.readAll().toStdString()));
             return true;
         }
     }
+    // 不需要显示关闭文件 QFile父类析构时自动关闭
     return false;
 }
 

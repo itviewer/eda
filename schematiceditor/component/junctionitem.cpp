@@ -9,7 +9,7 @@ JunctionItem::JunctionItem(SchematicScene *scene, const QPointF &center, QGraphi
     setZValue(ZValue::JunctionItemZValue);
 
     setPen(Qt::NoPen);
-    setBrush(QColor(schColor.selection));
+    setBrush(QColor(schColor.value("Selection")));
     shapePath.addEllipse(-4,-4,8,8);
     setFlags(ItemIsSelectable | ItemIsMovable | ItemSendsScenePositionChanges);
 

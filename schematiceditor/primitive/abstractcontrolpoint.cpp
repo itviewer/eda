@@ -6,7 +6,7 @@ AbstractControlPoint::AbstractControlPoint(QGraphicsItem *parent)
     :QGraphicsRectItem(QRectF(-5,-5,10,10),parent)
 {
     setPen(Qt::NoPen);
-    setBrush(QColor(schColor.selection));
+    setBrush(QColor(schColor.value("Selection")));
     setFlags( QGraphicsItem::ItemIsMovable |QGraphicsItem::ItemIgnoresTransformations );
 }
 

@@ -8,6 +8,7 @@
 
 #include "ui_schematiceditor.h"
 #include "globalsetting.h"
+#include "globalsettingcolorscheme.h"
 
 #include "dockwidget.h"
 #include "dockwidgettoolbar.h"
@@ -88,6 +89,7 @@ SchematicEditor::~SchematicEditor()
 {
     // 仅需要手动删除不是editor子对象的指针
     delete globalSetting;
+    delete globalSettingColorScheme;
     delete partLibManager;
     delete ui;
 
@@ -101,6 +103,10 @@ SchematicScene *SchematicEditor::currentScene() const
 
 void SchematicEditor::postInit()
 {
+    globalSetting = new GlobalSetting;
+    globalSettingColorScheme = new GlobalSettingColorScheme;
+    globalSettingColorScheme->setWindowModality(Qt::ApplicationModal);
+
     createMenuFile();
     createMenuEdit();
     createMenuView();
@@ -108,7 +114,6 @@ void SchematicEditor::postInit()
     createMenuSetup();
     createMenuHelp();
 
-    globalSetting = new GlobalSetting;
     partLibManager = new PartLibManager;
     connect(partLibManager,&PartLibManager::partLibraryChanged,
             partSelector,&PartSelector::onPartLibraryChanged);
@@ -361,7 +366,7 @@ void SchematicEditor::init()
     createToolButtonWiring();
     createToolButtonDrawing();
 
-    new SettingIO(this);
+    settingIO = new SettingIO(this);
 }
 
 void SchematicEditor::createMenuFile()
@@ -474,15 +479,9 @@ void SchematicEditor::createMenuSetup()
     QAction *actionMenuGrid = new QAction("栅格设置",this);
     ui->menuSetup->addAction(actionMenuGrid);
 
-    QMenu *menuColorScheme = new QMenu("颜色方案",this);
-    QAction *actionMenuColorSchemeDefault = new QAction("默认",this);
-    menuColorScheme->addAction(actionMenuColorSchemeDefault);
-
-    QAction *actionMenuColorSchemeOrcad = new QAction("Orcad",this);
-    menuColorScheme->addAction(actionMenuColorSchemeOrcad);
-
-    ui->menuSetup->addMenu(menuColorScheme);
-
+    QAction *actionMenuColorScheme = new QAction("颜色设置",this);
+    ui->menuSetup->addAction(actionMenuColorScheme);
+    connect(actionMenuColorScheme,&QAction::triggered,globalSettingColorScheme,&GlobalSettingColorScheme::show);
 }
 
 void SchematicEditor::createMenuHelp()
@@ -831,9 +830,9 @@ bool SchematicEditor::askSchPageName(QString &newPageName,int &index)
         index = newPageDialog.getIndex();
 
         return true;
-    }else{
-        return false;
     }
+
+    return false;
 }
 
 void SchematicEditor::resetStatusBar()

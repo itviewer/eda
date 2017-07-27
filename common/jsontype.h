@@ -19,6 +19,8 @@ extern void to_json(json& j, const QLineF& line);
 extern void to_json(json& j, const QString& str);
 extern void to_json(json& j, const QSizeF& size);
 extern void to_json(json& j, const QPolygonF& polygon);
+extern void to_json(json& j, const QVector<QString>& vector);
+extern void to_json(json& j, const QHash<QString,QString>& hash);
 
 extern void from_json(const json& j, QPointF& p);
 extern void from_json(const json& j, QRectF& rect);
@@ -27,5 +29,8 @@ extern void from_json(const json& j, QString& str);
 extern void from_json(const json& j, QSizeF& size);
 extern void from_json(const json& j, QPolygonF& polygon);
 extern void from_json(const json& j, QVariant& var);
+extern void from_json(const json& j,QVector<QString>& vector);
+extern void from_json(const json& j,QHash<QString,QString>& hash);
+
 
 #endif // JSONTYPE_H

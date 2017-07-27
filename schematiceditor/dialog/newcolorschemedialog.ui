@@ -1,29 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>NewPageDialog</class>
- <widget class="QDialog" name="NewPageDialog">
+ <class>NewColorSchemeDialog</class>
+ <widget class="QDialog" name="NewColorSchemeDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>307</width>
+    <width>247</width>
     <height>71</height>
    </rect>
   </property>
-  <property name="sizePolicy">
-   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-    <horstretch>0</horstretch>
-    <verstretch>0</verstretch>
-   </sizepolicy>
-  </property>
   <property name="windowTitle">
-   <string/>
-  </property>
-  <property name="sizeGripEnabled">
-   <bool>false</bool>
-  </property>
-  <property name="modal">
-   <bool>true</bool>
+   <string>Dialog</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
@@ -31,29 +19,12 @@
      <item>
       <widget class="QLabel" name="label">
        <property name="text">
-        <string>页面名称：</string>
+        <string>方案名称：</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEditName">
-       <property name="maxLength">
-        <number>30</number>
-       </property>
-       <property name="clearButtonEnabled">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_2">
-       <property name="text">
-        <string>排序：</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QSpinBox" name="spinBoxIndex"/>
+      <widget class="QLineEdit" name="lineEditColorScheme"/>
      </item>
     </layout>
    </item>
@@ -66,7 +37,7 @@
        </property>
        <property name="sizeHint" stdset="0">
         <size>
-         <width>104</width>
+         <width>48</width>
          <height>20</height>
         </size>
        </property>

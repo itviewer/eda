@@ -9,16 +9,19 @@ class SettingIO : public QObject
 public:
     explicit SettingIO(QObject *parent = nullptr);
 
+    bool saveSchSetting();
 signals:
 
 //public slots:
 private slots:
 
 private:
+    QString schSettingFile;
+
     void initEnvironment();
     void initSetting();
 
-    void generateDefaultSchSetting(const QString &filename);
+    void generateDefaultSchSetting();
 };
 
 #endif // SETTINGIO_H

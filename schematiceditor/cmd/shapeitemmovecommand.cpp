@@ -8,7 +8,7 @@ ShapeItemMoveCommand::ShapeItemMoveCommand(QGraphicsItem *item)
 
     initialPositions = shapeItem->initialPositions;
     newPos = shapeItem->pos();
-    for (auto i = initialPositions.constBegin(); i != initialPositions.constEnd(); ++i){
+    for (auto i = initialPositions.cbegin(); i != initialPositions.cend(); ++i){
         i.key()->metadata["pos"] = i.key()->pos();
     }
 }
@@ -19,7 +19,7 @@ void ShapeItemMoveCommand::undo()
     if(preUndoChildCount()){
         preUndo();qDebug() << "preUndo" ;
     }
-    for (auto i = initialPositions.constBegin(); i != initialPositions.constEnd(); ++i){
+    for (auto i = initialPositions.cbegin(); i != initialPositions.cend(); ++i){
         i.key()->setPos(i.value());
         i.key()->metadata["pos"] = i.value();
     }
@@ -34,7 +34,7 @@ void ShapeItemMoveCommand::redo()
         preRedo();qDebug() << "preRedo" ;
     }
     const QPointF delta = newPos - initialPositions.value(shapeItem);
-    for (auto i = initialPositions.constBegin(); i != initialPositions.constEnd(); ++i){
+    for (auto i = initialPositions.cbegin(); i != initialPositions.cend(); ++i){
         i.key()->setPos(i.value() + delta);
         i.key()->metadata["pos"] = i.value();
     }

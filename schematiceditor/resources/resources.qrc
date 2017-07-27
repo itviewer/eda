@@ -5,5 +5,6 @@
         <file>icon/drc.png</file>
         <file>icon/netlist.png</file>
         <file>icon/pcb.png</file>
+        <file>default/schsetting.json</file>
     </qresource>
 </RCC>

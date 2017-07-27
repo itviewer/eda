@@ -292,8 +292,8 @@ void SchematicScene::saveScenePixmap()
 void SchematicScene::saveScenePart()
 {
     pagePart.clear();
-    auto i = scenePart.constBegin();
-    while(i != scenePart.constEnd()){
+    auto i = scenePart.cbegin();
+    while(i != scenePart.cend()){
         pagePart.push_back(i.value()->getMetadata());
         i++;
     }

@@ -8,7 +8,7 @@ ShapeItemRotateCommand::ShapeItemRotateCommand(QGraphicsItem *item)
     initialRotations = item->initialRotations;
     item->initialRotations.clear();
 
-    for (auto i = initialRotations.constBegin(); i != initialRotations.constEnd(); ++i){
+    for (auto i = initialRotations.cbegin(); i != initialRotations.cend(); ++i){
         i.key()->metadata["rotation"] = i.key()->rotation();
         newRotations.insert(i.key(),i.key()->rotation());
     }
@@ -18,7 +18,7 @@ void ShapeItemRotateCommand::undo()
 {
     
 
-    for (auto i = initialRotations.constBegin(); i != initialRotations.constEnd(); ++i){
+    for (auto i = initialRotations.cbegin(); i != initialRotations.cend(); ++i){
         i.key()->setRotation(i.value());
         i.key()->metadata["rotation"] = i.value();
         if(i.key()->isSelected()){
@@ -29,7 +29,7 @@ void ShapeItemRotateCommand::undo()
 
 void ShapeItemRotateCommand::redo()
 {
-    for (auto i = newRotations.constBegin(); i != newRotations.constEnd(); ++i){
+    for (auto i = newRotations.cbegin(); i != newRotations.cend(); ++i){
         i.key()->setRotation(i.value());
         i.key()->metadata["rotation"] = i.value();
     }

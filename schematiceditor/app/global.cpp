@@ -11,10 +11,13 @@
  */
 
 bool snapToGrid = true;
-colorScheme schColor;
+QHash<QString,QString> schColor;
+QVector<QString> schColorScheme;
 
 SchematicEditor *schEditor = nullptr;
 PartEditor *partEditor = nullptr;
+SchematicIO *schIO = nullptr;
+SettingIO *settingIO = nullptr;
 StateMachine *fsm = nullptr;
 Db *partLib = nullptr;
 
@@ -39,7 +42,7 @@ QVector<WireSegmentItem *> mergeQueue;
 QString defaultPageSize = "A4";
 int designGridSize = 10;
 int displayGridSize = 10;
-QString currentColorScheme = "orcad";
+QString currentColorScheme = "Idea";
 
 
 json schSetting = json::parse(defaultSetting);
@@ -99,14 +102,6 @@ int gndMaxIndex = 0;
  *
  * ***********************************************************************
  */
-
-void from_json(const json& j,colorScheme& color) {
-    color.background = QString::fromStdString(j["background"].get<std::string>());
-    color.display = QString::fromStdString(j["display"].get<std::string>());
-    color.selection = QString::fromStdString(j["selection"].get<std::string>());
-    color.drawing = QString::fromStdString(j["drawing"].get<std::string>());
-}
-
 
 const QPointF flagToPoint(int flag,const QRectF &rect)
 {

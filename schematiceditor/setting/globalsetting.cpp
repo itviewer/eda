@@ -4,7 +4,6 @@
 #include "globalsettingdesign.h"
 #include "globalsettingtext.h"
 #include "globalsettinglinewidth.h"
-#include "globalsettingcolorscheme.h"
 
 GlobalSetting::GlobalSetting(QWidget *parent) :
     QWidget(parent)
@@ -52,7 +51,6 @@ void GlobalSetting::init()
     QTreeWidgetItem *designTreeItem = new QTreeWidgetItem({("设计")});
     QTreeWidgetItem *textTreeItem = new QTreeWidgetItem({("文本")});
     QTreeWidgetItem *lineWidthTreeItem = new QTreeWidgetItem({("线宽")});
-    QTreeWidgetItem *colorSchemeTreeItem = new QTreeWidgetItem({("颜色")});
 
     GlobalSettingGeneral *globalSettingGeneral = new GlobalSettingGeneral;
     stackedWidget->addWidget(globalSettingGeneral);
@@ -70,15 +68,10 @@ void GlobalSetting::init()
     stackedWidget->addWidget(globalSettingLineWidth);
     menuMap.insert(lineWidthTreeItem,globalSettingLineWidth);
 
-    GlobalSettingColorScheme *globalSettingColorScheme = new GlobalSettingColorScheme;
-    stackedWidget->addWidget(globalSettingColorScheme);
-    menuMap.insert(colorSchemeTreeItem,globalSettingColorScheme);
-
     treeWidget->addTopLevelItem(generalTreeItem);
     treeWidget->addTopLevelItem(designTreeItem);
     treeWidget->addTopLevelItem(textTreeItem);
     treeWidget->addTopLevelItem(lineWidthTreeItem);
-    treeWidget->addTopLevelItem(colorSchemeTreeItem);
 
     connect(treeWidget,&QTreeWidget::currentItemChanged,this,[this](QTreeWidgetItem *item){
         stackedWidget->setCurrentWidget(menuMap.value(item));

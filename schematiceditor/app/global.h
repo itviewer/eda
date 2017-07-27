@@ -12,6 +12,8 @@ class StateMachine;
 class Db;
 class QUndoCommand;
 class WireSegmentItem;
+class SchematicIO;
+class SettingIO;
 
 /**
  * ***********************************************************************
@@ -20,14 +22,6 @@ class WireSegmentItem;
  *
  * ***********************************************************************
  */
-
-struct colorScheme
-{
-    QString background;
-    QString display;
-    QString selection;
-    QString drawing;
-};
 
 enum Item
 {
@@ -201,10 +195,13 @@ const QString schSettingFileName = "schsetting.json";
  */
 
 extern bool snapToGrid;
-extern colorScheme schColor;
+extern QHash<QString,QString> schColor;
+extern QVector<QString> schColorScheme;
 
 extern SchematicEditor *schEditor;
 extern PartEditor *partEditor;
+extern SchematicIO *schIO;
+extern SettingIO *settingIO;
 extern StateMachine *fsm;
 extern Db *partLib;
 
@@ -288,9 +285,6 @@ extern int gndMaxIndex;
  *
  * ***********************************************************************
  */
-
-extern void from_json(const json& j,colorScheme& color);
-
 
 extern const QPointF flagToPoint(int flag,const QRectF &rect);
 

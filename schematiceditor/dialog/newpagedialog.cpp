@@ -8,6 +8,7 @@ NewPageDialog::NewPageDialog(QWidget *parent) :
     ui(new Ui::NewPageDialog)
 {
     ui->setupUi(this);
+    setWindowTitle("新建原理图页");
     ui->pushButtonOK->setDisabled(true);
 
     connect(ui->lineEditName,&QLineEdit::textChanged,this,[this](){
@@ -21,9 +22,7 @@ NewPageDialog::NewPageDialog(QWidget *parent) :
 
 
     connect(ui->pushButtonOK,&QPushButton::clicked,this,&NewPageDialog::onPushButtonOKClicked);
-    connect(ui->pushButtonCancel,&QPushButton::clicked,this,[this](){
-        reject();
-    });
+    connect(ui->pushButtonCancel,&QPushButton::clicked,this,&NewPageDialog::reject);
 }
 
 NewPageDialog::~NewPageDialog()

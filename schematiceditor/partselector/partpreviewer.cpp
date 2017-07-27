@@ -7,7 +7,7 @@ PartPreviewer::PartPreviewer(QWidget *parent)
     :QGraphicsView(parent)
 {
     setFixedSize(115,115);
-    setBackgroundBrush(QColor(schColor.background));
+    setBackgroundBrush(QColor(schColor.value("Background")));
 //    setFrameStyle(QFrame::NoFrame);
 
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);

@@ -9,6 +9,7 @@ class SchematicEditor;
 }
 
 class GlobalSetting;
+class GlobalSettingColorScheme;
 class SchematicView;
 class SchematicScene;
 class StateMachine;
@@ -32,7 +33,6 @@ public:
     ~SchematicEditor();
 
     // 共外部类使用的共享指针
-    SchematicIO *schIO;
     TabContainer *tabContainer;
 
     QUndoGroup *undoGroup;
@@ -57,6 +57,7 @@ signals:
     void launched();
     void sceneStateChanged(const FSM &state);
     void pageAdded(SchematicScene *page);
+    void colorSchemeChanged(const QString &scheme);
 
 public slots:
     void onCurrentViewChanged(const int &index);
@@ -91,6 +92,7 @@ private:
 
     SchematicView *currentSchView;
     GlobalSetting *globalSetting;
+    GlobalSettingColorScheme *globalSettingColorScheme;
     PartLibManager *partLibManager;
 
     DockWidget* navigatorDock;

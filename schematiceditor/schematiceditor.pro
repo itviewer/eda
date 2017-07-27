@@ -48,7 +48,8 @@ FORMS += \
     setting/globalsettingdesign.ui \
     setting/globalsettingtext.ui \
     setting/globalsettinglinewidth.ui \
-    dialog/newpagedialog.ui
+    dialog/newpagedialog.ui \
+    dialog/newcolorschemedialog.ui
 
 HEADERS += \
     app/global.h \
@@ -156,7 +157,8 @@ HEADERS += \
     navigator/schtreewidgetitem.h \
     component/pageborderitem.h \
     dialog/newpagedialog.h \
-    app/settingio.h
+    app/settingio.h \
+    dialog/newcolorschemedialog.h
 
 SOURCES += \
     app/global.cpp \
@@ -262,7 +264,8 @@ SOURCES += \
     navigator/schtreewidgetitem.cpp \
     component/pageborderitem.cpp \
     dialog/newpagedialog.cpp \
-    app/settingio.cpp
+    app/settingio.cpp \
+    dialog/newcolorschemedialog.cpp
 
 RESOURCES += \
     test/test.qrc \

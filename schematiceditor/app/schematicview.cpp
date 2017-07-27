@@ -13,7 +13,7 @@ SchematicView::SchematicView(QWidget *parent)
     gridSize = designGridSize;
 
     setFrameStyle(QFrame::NoFrame);
-    setBackgroundBrush(QColor(schColor.background));
+    setBackgroundBrush(QColor(schColor.value("Background")));
     // 非常重要的优化参数
 //    setViewportUpdateMode(QGraphicsView::MinimalViewportUpdate);
     // AnchorUnderMouse 会自动打开MouseTracking AnchorViewCenter需要手动开启

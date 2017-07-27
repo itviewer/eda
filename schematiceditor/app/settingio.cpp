@@ -10,9 +10,15 @@ SettingIO::SettingIO(QObject *parent)
     initSetting();
 }
 
+bool SettingIO::saveSchSetting()
+{
+    return saveJsonDocument(schSettingFile,schSetting);
+}
+
 void SettingIO::initEnvironment()
 {
     settingDir = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + DS;
+    schSettingFile = settingDir + schSettingFileName;
 
     QDir dir;
     if (!dir.exists(settingDir))
@@ -21,25 +27,23 @@ void SettingIO::initEnvironment()
 
 void SettingIO::initSetting()
 {
-    const QString schSettingFile = settingDir + schSettingFileName;
-    if(QFileInfo::exists(schSettingFile)){
-        json setting;
-        loadJsonDocument(schSettingFile,setting);
-
-        schSettingGeneral = setting["general"];
-        schGlobalSettingGeneral = setting["globalSettingGeneral"];
-        schGlobalSettingDesign = setting["globalSettingDesign"];
-        schGlobalSettingText = setting["globalSettingText"];
-        schGlobalSettingLineWidth = setting["globalSettingLineWidth"];
-        schGlobalSettingColorScheme = setting["globalSettingColorScheme"];
-    }else{
-        generateDefaultSchSetting(schSettingFile);
+    if(!QFileInfo::exists(schSettingFile)){
+        generateDefaultSchSetting();
     }
 
-    schColor = schGlobalSettingColorScheme["schemes"][schSettingGeneral["lastUsedColorScheme"].get<std::string>()];
+    loadJsonDocument(schSettingFile,schSetting);
+
+    schColorScheme = schGlobalSettingColorScheme["colorScheme"];
+    currentColorScheme = schSettingGeneral["lastUsedColorScheme"].get<QString>();
+    schColor = schGlobalSettingColorScheme["schemes"][currentColorScheme.toStdString()];
+    //schColor.value("Background")
+    //schColor.value("Display")
+    //schColor.value("Selection")
+    //schColor.value("Drawing")
 }
 
-void SettingIO::generateDefaultSchSetting(const QString &filename)
+void SettingIO::generateDefaultSchSetting()
 {
-    saveJsonDocument(filename,json::object());
+    QFile::copy(":/default/schsetting.json",schSettingFile);
+    QFile::setPermissions(schSettingFile,QFileDevice::WriteOwner);
 }
