@@ -11,6 +11,7 @@ SchematicView::SchematicView(QWidget *parent)
       currentScaleFactor(1.0)
 {
     gridSize = designGridSize;
+    rubberBandColor = "#BF7F7F";
 
     setFrameStyle(QFrame::NoFrame);
     setBackgroundBrush(QColor(schColor.value("Background")));

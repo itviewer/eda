@@ -4,7 +4,9 @@ QT += core gui widgets printsupport sql concurrent
 CONFIG(release, debug|release):TARGET = footprinteditor
 CONFIG(debug, debug|release):TARGET = footprinteditord
 
-TEMPLATE = app
+TEMPLATE = lib
+
+DEFINES += FOOTPRINTEDITOR_LIBRARY
 
 #DEFINES += QT_NO_DEBUG_OUTPUT
 #DEFINES += JSON_NOEXCEPTION
@@ -25,7 +27,8 @@ FORMS += \
     app/footprinteditor.ui
 
 HEADERS += \
-    app/footprinteditor.h
+    app/footprinteditor.h \
+    app/footprinteditor_global.h
 
 SOURCES += \
     app/footprinteditor.cpp \

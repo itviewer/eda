@@ -584,6 +584,16 @@ void SchematicEditor::createToolButtonMain()
 
     QAction *actionButtonPCB = new QAction(QIcon(":/icon/pcb.png"),"同步PCB",this);
     ui->toolBarDesign->addAction(actionButtonPCB);
+
+    QLineEdit *searchBox = new QLineEdit;
+    searchBox->setFixedWidth(200);
+    ui->toolBarSearchFilter->addWidget(searchBox);
+
+    QAction *actionButtonSearch = new QAction(QIcon(":/icon/search.png"),"搜索",this);
+    ui->toolBarSearchFilter->addAction(actionButtonSearch);
+
+    QAction *actionButtonFilter = new QAction(QIcon(":/icon/filter.png"),"选择过滤",this);
+    ui->toolBarSearchFilter->addAction(actionButtonFilter);
 }
 
 void SchematicEditor::createToolButtonDrawing()

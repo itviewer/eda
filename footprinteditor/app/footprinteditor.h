@@ -2,12 +2,13 @@
 #define FOOTPRINTEDITOR_H
 
 #include <QMainWindow>
+#include "footprinteditor_global.h"
 
 namespace Ui {
     class FootprintEditor;
 }
 
-class FootprintEditor : public QMainWindow
+class FOOTPRINTEDITORSHARED_EXPORT FootprintEditor : public QMainWindow
 {
     Q_OBJECT
 

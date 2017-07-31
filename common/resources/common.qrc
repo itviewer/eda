@@ -25,5 +25,7 @@
         <file>icon/zoomIn.png</file>
         <file>icon/zoomOne.png</file>
         <file>icon/zoomOut.png</file>
+        <file>icon/search.png</file>
+        <file>icon/filter.png</file>
     </qresource>
 </RCC>

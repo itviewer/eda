@@ -1,0 +1,4 @@
+*.user
+*.gitignore
+*.autosave
+/out
