@@ -1,14 +1,18 @@
 #ifndef PADITEM_H
 #define PADITEM_H
 
-#include <QGraphicsPathItem>
+#include "apertureitem.h"
 
-class PCBScene;
-
-class PadItem : public QGraphicsPathItem
+class PadItem : public ApertureItem
 {
 public:
-    PadItem(PCBScene *scene, QGraphicsItem *parent = nullptr);
+    PadItem(PCBScene *scene,const json &j,QGraphicsItem *parent = nullptr);
+
+    enum {
+        Type = Item::PadItemType
+    };
+
+    int type() const;
 };
 
 #endif // PADITEM_H

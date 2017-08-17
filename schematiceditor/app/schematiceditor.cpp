@@ -82,7 +82,7 @@ SchematicEditor::SchematicEditor(QWidget *parent) :
 
     createNewSchPage();
 
-    setWindowTitle("IdeaEDA-iCAD-未命名原理图");
+    setWindowTitle("IdeaCAD-未命名原理图");
 }
 
 SchematicEditor::~SchematicEditor()
@@ -118,6 +118,7 @@ void SchematicEditor::postInit()
     connect(partLibManager,&PartLibManager::partLibraryChanged,
             partSelector,&PartSelector::onPartLibraryChanged);
 
+    // Sets the given dock widget area to occupy the specified corner.
     setCorner(Qt::BottomLeftCorner,Qt::LeftDockWidgetArea);
     setCorner(Qt::BottomRightCorner,Qt::RightDockWidgetArea);
 

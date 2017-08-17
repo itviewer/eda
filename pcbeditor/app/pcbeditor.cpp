@@ -16,6 +16,8 @@
 #include "statemachine.h"
 #include "setting.h"
 
+#include "../footprinteditor/app/footprinteditor.h"
+
 PCBEditor::PCBEditor(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::PCBEditor),
@@ -25,7 +27,6 @@ PCBEditor::PCBEditor(QWidget *parent) :
     pcbEditor = this;
 
     setDockOptions( AnimatedDocks | AllowTabbedDocks | GroupedDragging | ForceTabbedDocks);
-
     init();
 
     navigatorDock = new DockWidget(tr("项目浏览器"),this);
@@ -44,7 +45,7 @@ PCBEditor::PCBEditor(QWidget *parent) :
     connect(this,&PCBEditor::launch,
             this,&PCBEditor::postInit);
 
-    setWindowTitle("IdeaEDA-iPCB");
+    setWindowTitle("IdeaPCB");
 }
 
 PCBEditor::~PCBEditor()
@@ -130,7 +131,20 @@ void PCBEditor::postInit()
             fsm,&StateMachine::onSceneStateChanged);
     pcbView->pcbScene->installEventFilter(fsm);
 
-    createMenuSetting();
+    createMenuFile();
+    createMenuEdit();
+    createMenuView();
+    createMenuTools();
+    createMenuSetup();
+    createMenuHelp();
+
+    setCorner(Qt::BottomLeftCorner,Qt::LeftDockWidgetArea);
+    setCorner(Qt::BottomRightCorner,Qt::RightDockWidgetArea);
+
+
+    footprintEditor = new FootprintEditor;
+    connect(footprintEditor,&FootprintEditor::aboutToQuit,this,&PCBEditor::show);
+
 }
 
 void PCBEditor::onMetadataSaved()
@@ -161,6 +175,12 @@ void PCBEditor::onDockAutoHideButtonClicked(bool autoHide)
     }
 }
 
+void PCBEditor::onActionFootprintEditorTriggered()
+{
+    footprintEditor->show();
+    hide();
+}
+
 void PCBEditor::init()
 {
     undoGroup = new QUndoGroup(this);
@@ -177,13 +197,35 @@ void PCBEditor::createMenuFile()
 
 }
 
-void PCBEditor::createMenuSetting()
+void PCBEditor::createMenuEdit()
+{
+
+}
+
+void PCBEditor::createMenuView()
+{
+
+}
+
+void PCBEditor::createMenuTools()
+{
+    QAction *actionMenuFootprintEditor = new QAction("封装编辑器",this);
+    ui->menuTools->addAction(actionMenuFootprintEditor);
+    connect(actionMenuFootprintEditor,&QAction::triggered,this,&PCBEditor::onActionFootprintEditorTriggered);
+}
+
+void PCBEditor::createMenuSetup()
 {
     QAction *actionGlobalSetting = new QAction(tr("全局设置"),this);
     ui->menuSetting->addAction(actionGlobalSetting);
     connect(actionGlobalSetting,&QAction::triggered,this,[=](){
         globalSetting->show();
     });
+}
+
+void PCBEditor::createMenuHelp()
+{
+
 }
 
 void PCBEditor::createToolButtonMain()
@@ -242,9 +284,12 @@ void PCBEditor::createToolButtonDrawing()
     actionCopperPourItem->setCheckable(true);
     ui->toolBarDesign->addAction(actionCopperPourItem);
 
-    QAction *actionMountingHoleItem = new QAction(QIcon(":/icon/hole.png"),tr("安装孔"),this);
+    QAction *actionMountingHoleItem = new QAction(QIcon(":/icon/hole.png"),tr("过孔"),this);
     actionMountingHoleItem->setCheckable(true);
     ui->toolBarDesign->addAction(actionMountingHoleItem);
+    connect(actionMountingHoleItem,&QAction::triggered,this, [=] () {
+        setSceneState(FSM::ViaItemState,actionMountingHoleItem);
+    });
 
     QAction *actionBoardItem = new QAction(QIcon(""),tr("板框"),this);
     actionBoardItem->setCheckable(true);
@@ -333,3 +378,4 @@ void PCBEditor::createStatusLabel()
 {
 
 }
+

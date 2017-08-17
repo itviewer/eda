@@ -125,18 +125,18 @@ private:
 
     inline void init();
 
-    inline void createMenuFile();
-    inline void createMenuEdit();
-    inline void createMenuView();
-    inline void createMenuTools();
-    inline void createMenuSetup();
-    inline void createMenuHelp();
+    void createMenuFile();
+    void createMenuEdit();
+    void createMenuView();
+    void createMenuTools();
+    void createMenuSetup();
+    void createMenuHelp();
 
-    inline void createToolButtonMain();
-    inline void createToolButtonDrawing();
-    inline void createToolButtonWiring();
+    void createToolButtonMain();
+    void createToolButtonDrawing();
+    void createToolButtonWiring();
 
-    inline void createStatusLabel();
+    void createStatusLabel();
 
     void createNewSchPage(bool manual = false);
     void changeSchPageName(const QString &name);

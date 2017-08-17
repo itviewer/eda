@@ -20,9 +20,15 @@ PCBView::PCBView(QWidget *parent)
     setSceneRect(QRectF(0,0, 5000, 5000));
     setScene(pcbScene);
 
-    setDragMode(QGraphicsView::RubberBandDrag);
 //    snapToGrid = false;
     displayGridSize = 10;
+
+    connect(pcbEditor,&PCBEditor::sceneStateChanged,this,[this](const FSM &state){
+        setDragMode((state == FSM::SelectState ? QGraphicsView::RubberBandDrag
+                                                        : QGraphicsView::NoDrag));
+    });
+
+//    setRenderHint(QPainter::Antialiasing,true);
 }
 
 PCBView::~PCBView()

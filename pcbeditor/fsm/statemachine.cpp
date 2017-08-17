@@ -16,6 +16,7 @@
 #include "statetextitem.h"
 #include "statepixmapitem.h"
 
+#include "stateviaitem.h"
 
 StateMachine::StateMachine(QObject *parent)
     : QObject(parent),
@@ -32,6 +33,8 @@ StateMachine::StateMachine(QObject *parent)
     states[FSM::CubicBezierItemState] = new StateCubicBezierItem(this);
     states[FSM::TextItemState] = new StateTextItem(this);
     states[FSM::PixmapItemState] = new StatePixmapItem(this);
+
+    states[FSM::ViaItemState] = new StateViaItem(this);
 
     PCBScene *pcbScene = pcbEditor->pcbScene();
     for (auto it = states.begin(); it != states.end(); ++it){

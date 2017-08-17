@@ -31,6 +31,5 @@ HEADERS += \
     app/footprinteditor_global.h
 
 SOURCES += \
-    app/footprinteditor.cpp \
-    app/main.cpp
+    app/footprinteditor.cpp
 

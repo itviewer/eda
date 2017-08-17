@@ -26,7 +26,8 @@ INCLUDEPATH += \
     setting \
     fsm \
     primitive \
-    navigator
+    navigator \
+    component
 
 FORMS += \
     app/pcbeditor.ui \
@@ -45,7 +46,6 @@ HEADERS += \
     primitive/abstractcontrolpoint.h \
     setting/globalsettinggeneral.h \
     setting/globalsettingbackup.h \
-    component/paditem.h \
     fsm/state.h \
     fsm/statemachine.h \
     fsm/statearcitem.h \
@@ -77,7 +77,11 @@ HEADERS += \
     primitive/textitem.h \
     navigator/navigator.h \
     app/setting.h \
-    app/defaultproperty.h
+    app/defaultproperty.h \
+    fsm/stateviaitem.h \
+    component/abstractpackageitem.h \
+    component/apertureitem.h \
+    component/paditem.h
 
 SOURCES += \
     app/pcbeditor.cpp \
@@ -92,7 +96,6 @@ SOURCES += \
     primitive/abstractcontrolpoint.cpp \
     setting/globalsettinggeneral.cpp \
     setting/globalsettingbackup.cpp \
-    component/paditem.cpp \
     fsm/state.cpp \
     fsm/statemachine.cpp \
     fsm/statearcitem.cpp \
@@ -124,8 +127,16 @@ SOURCES += \
     primitive/textitem.cpp \
     navigator/navigator.cpp \
     app/setting.cpp \
-    app/defaultproperty.cpp
+    app/defaultproperty.cpp \
+    fsm/stateviaitem.cpp \
+    component/abstractpackageitem.cpp \
+    component/apertureitem.cpp \
+    component/paditem.cpp
 
 RESOURCES += \
     test/test.qrc \
     resources/resources.qrc
+
+win32:CONFIG(release, debug|release): LIBS += -L$$DESTDIR/ -lfootprinteditor
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$DESTDIR/ -lfootprinteditord
+else:unix: LIBS += -L$$DESTDIR/ -lfootprinteditor

@@ -3,7 +3,5 @@ TEMPLATE = subdirs
 SUBDIRS += \
     schematiceditor \
     parteditor \
-    pcbeditor \
-    footprinteditor
-#    controlcenter
+#    controlcenter \
     specification

@@ -13,6 +13,7 @@ bool snapToGrid = true;
 colorScheme schColor;
 
 PCBEditor *pcbEditor = nullptr;
+FootprintEditor *footprintEditor = nullptr;
 StateMachine *fsm = nullptr;
 
 /**

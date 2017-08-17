@@ -9,6 +9,8 @@ class PCBView;
 
 class PCBScene : public QGraphicsScene
 {
+    Q_OBJECT
+
 public:
     PCBScene(PCBView *pcbView,QObject *parent = nullptr);
 

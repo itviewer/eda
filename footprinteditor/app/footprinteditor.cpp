@@ -12,3 +12,9 @@ FootprintEditor::~FootprintEditor()
 {
     delete ui;
 }
+
+void FootprintEditor::closeEvent(QCloseEvent *event)
+{
+    emit aboutToQuit();
+    QMainWindow::closeEvent(event);
+}

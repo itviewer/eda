@@ -21,7 +21,7 @@ class PCBEditor : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit PCBEditor(QWidget *parent = 0);
+    explicit PCBEditor(QWidget *parent = nullptr);
     ~PCBEditor();
 
     PCBScene *pcbScene() const;
@@ -46,6 +46,8 @@ private slots:
     void postInit();
     void onMetadataSaved();
     void onDockAutoHideButtonClicked(bool autoHide);
+
+    void onActionFootprintEditorTriggered();
 
 private:
     Ui::PCBEditor *ui;
@@ -74,19 +76,18 @@ private:
 
     inline void init();
 
-    inline void createMenuFile();
-//    inline void createMenuEdit();
-//    inline void createMenuView();
-//    inline void createMenuTools();
-    inline void createMenuSetting();
-//    inline void createMenuHelp();
+    void createMenuFile();
+    void createMenuEdit();
+    void createMenuView();
+    void createMenuTools();
+    void createMenuSetup();
+    void createMenuHelp();
 
-    inline void createToolButtonMain();
-    inline void createToolButtonDrawing();
+    void createToolButtonMain();
+    void createToolButtonDrawing();
 
 
-    inline void createStatusLabel();
-
+    void createStatusLabel();
 };
 
 #endif // PCBEDITOR_H

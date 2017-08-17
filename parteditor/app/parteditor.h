@@ -26,7 +26,7 @@ class PARTEDITORSHARED_EXPORT PartEditor : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit PartEditor(QWidget *parent = 0);
+    explicit PartEditor(QWidget *parent = nullptr);
     ~PartEditor();
 
     QUndoStack *undoStack;

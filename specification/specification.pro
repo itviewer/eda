@@ -5,4 +5,5 @@ DISTFILES += \
     partlib2.json \
     sch_1_0.json \
     temp.json \
-    schsetting.json
+    schsetting.json \
+    testtest.json

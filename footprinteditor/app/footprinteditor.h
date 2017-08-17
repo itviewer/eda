@@ -13,8 +13,14 @@ class FOOTPRINTEDITORSHARED_EXPORT FootprintEditor : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit FootprintEditor(QWidget *parent = 0);
+    explicit FootprintEditor(QWidget *parent = nullptr);
     ~FootprintEditor();
+
+signals:
+    void aboutToQuit();
+
+protected:
+    void closeEvent(QCloseEvent *event);
 
 private:
     Ui::FootprintEditor *ui;

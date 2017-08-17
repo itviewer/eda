@@ -7,7 +7,6 @@ PCBScene::PCBScene(PCBView *pcbView,QObject *parent)
     :QGraphicsScene(parent),
       pcbView(pcbView)
 {
-
 }
 
 void PCBScene::onSceneStateChanged(const FSM &state)
