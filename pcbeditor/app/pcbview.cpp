@@ -10,6 +10,8 @@ PCBView::PCBView(QWidget *parent)
       currentScaleFactor(1.0)
 
 {
+    rubberBandColor = "#BF7F7F";
+
 //    setFrameStyle(QFrame::NoFrame);
     setBackgroundBrush(QColor("#408080"));
     setViewportUpdateMode(QGraphicsView::BoundingRectViewportUpdate);

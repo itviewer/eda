@@ -25,6 +25,7 @@ win32 {
 }
 
 DESTDIR = $$PWD/../out
+TRANSLATIONS = i18n/schematiceditor_en.ts
 
 include(../common/common.pri)
 include(../partlibmanager/partlibmanager.pri)

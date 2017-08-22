@@ -23,6 +23,7 @@ win32 {
 }
 
 DESTDIR = $$PWD/../out
+TRANSLATIONS = i18n/parteditor_en.ts
 
 include(../common/common.pri)
 include(../partlibmanager/partlibmanager.pri)

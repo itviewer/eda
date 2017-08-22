@@ -27,6 +27,15 @@ int main(int argc, char *argv[])
 
     QApplication a(argc, argv);
 
+    const QString lang = QLocale::system().name();
+    QTranslator translator;
+    if(lang != "zh_CN"){
+        if(translator.load("schematiceditor_" + lang,"H:/eda/eda/schematiceditor/i18n")){
+            a.installTranslator(&translator);
+        }
+    }
+
+
 //    QPixmap pixmap(":/splash.png");
 //    QSplashScreen splash(pixmap);
 //    splash.show();

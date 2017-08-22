@@ -9,6 +9,7 @@ ApertureItem::ApertureItem(PCBScene *scene, const json &j, QGraphicsItem *parent
         holeItem = new QGraphicsPathItem(this);
     }
     setGeometry(j["geometry"]);
+//    setOpacity(0);
 }
 
 void ApertureItem::selected()
